@@ -8,7 +8,7 @@ a place to help share themes and foster the comunity
 - .. more late?
 
 ## Design (WIP)
-[design](https://www.figma.com/file/PsUWhZn7otLrQIwKxnUcAxkZ/T-Ui)
+![docs/design.png](https://www.figma.com/file/PsUWhZn7otLrQIwKxnUcAxkZ/T-Ui)
 
 comments always welome
 
