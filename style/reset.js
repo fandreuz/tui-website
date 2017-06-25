@@ -20,6 +20,14 @@ function styles(sheet, sv) {
     color:${sv.textColor};
   `)
   sheet.add('header', `
+    font-size:2em;
+    font-weight:300;
+    text-align:center;
+    display:inline-block;
+    width:100%;
+  `)
+  sheet.add('h1,h2,h3', `
+    font-weight:300;
   `)
 }
 module.exports = styles
