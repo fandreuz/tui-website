@@ -8,6 +8,7 @@ function mainView(state, emit) {
       <div class="container" >
         ${header(state, emit)}
       </div>
+      // Theme Builder goes here
     </body>
   `
 }
