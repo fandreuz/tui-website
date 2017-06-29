@@ -1,8 +1,5 @@
 const html = require('choo/html')
 const Fairybread = require('fairybread')
-const sv = require('../../style/vars')
-
-const helper = require('../utils/helper')
 
 function navbar(state, emit) {
   const rawList = {
@@ -29,6 +26,9 @@ function styles() {
   sheet.add('li', `
         display:inline-block;
         padding:0 1em;
+      `)
+  sheet.add('a:hover', `
+        color:white;
       `)
   sheet.render()
   return sheet.id
