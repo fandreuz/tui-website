@@ -8,7 +8,6 @@ styles.render()
 
 app.use(store)
 app.use(logger)
-console.log(router)
 router.map((data) => {
   app.route(data.url, data.view)
 })
