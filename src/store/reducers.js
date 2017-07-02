@@ -1,4 +1,4 @@
-const { requester, xmlToJson } = require('store/network')
+const { requester, normalizer } = require('store/network')
 
 function getThemes(state, emitter) {
   const storeThemes = (respond) => {
@@ -12,6 +12,7 @@ function getThemes(state, emitter) {
   }
   requester(call, storeThemes, emitter)
 }
+
 function getSingle(data, state, emitter) {
   const calls = {
     'theme': {
@@ -25,16 +26,20 @@ function getSingle(data, state, emitter) {
   }
   state.themes[data.name].files = {}
   const storeFile = (respond, type) => {
-    console.log(respond)
-    state.themes[data.name]['files'][type] = JSON.parse(respond.currentTarget.response)[type]
+    const json = JSON.parse(respond.currentTarget.response)[type]
+    state.themes[data.name]['files'][type] = normalizer(json)
+    state.themes[data.name].themeLoaded = true
   }
-  const storeTheme = (respond) => { storeFile(respond, 'THEME') }
+  const storeTheme = (respond) => {
+    storeFile(respond, 'THEME')
+    emitter.emit('render')
+  }
   const storeSuggestion = (respond) => { storeFile(respond, 'SUGGESTIONS') }
 
   requester(calls.theme, storeTheme, emitter)
   requester(calls.suggestion, storeSuggestion, emitter)
-
 }
+
 const reducers = {
   getThemes,
   getSingle

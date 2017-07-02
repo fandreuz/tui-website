@@ -7,14 +7,13 @@ function requester(call, callback, emitter) {
   xhr.withCredentials = false
   xhr.send(null)
 }
-  // Changes XML to JSON
-function xmlToJson(rawXML) {
-
-  // Create the return object
-  var obj = {}
-  const parser = new DOMParser() // eslint-disable-line
-  const xml = parser.parseFromString(rawXML, 'text/xml')
-  return xml
+// Changes XML to JSON
+function normalizer(rawJson) {
+  let result = {}
+  Object.keys(rawJson).map((key) => {
+    result[key] = rawJson[key].$.value
+  })
+  return result
 }
 
-module.exports = {requester, xmlToJson}
+module.exports = { requester, normalizer }
