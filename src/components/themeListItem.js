@@ -16,8 +16,8 @@ function themeListItem(self, state, emit) {
         <h1>${self[0]}</h1>
         <div className="actions">
           Download:
-          <a href="${files.xml.theme}">[Theme]</a>
-          <a href="${files.xml.suggestions}">[Suggestions]</a>
+          <a download="theme.xml" target="_blank" href="${files.xml.theme}">[Theme]</a>
+          <a download="suggestions.xml;" target="_blank" href="${files.xml.suggestions}">[Suggestions]</a>
         </div>
       </div>
     `

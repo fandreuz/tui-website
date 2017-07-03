@@ -24,6 +24,7 @@ function themeList(state, emit) {
     const sheet = new Fairybread('local')
     sheet.add('', `
           padding-top:4em;
+          min-height:263px;
         `)
     sheet.add('.theme_item', `
           width: 23%;
