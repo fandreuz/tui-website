@@ -2,6 +2,7 @@ const html = require('choo/html')
 const navbar = require('../components/navbar')
 
 function header(state, emit) {
+  // include flashing terminal underline after title
   return html`
       <header>
       <h1>t-ui launcher</h1>

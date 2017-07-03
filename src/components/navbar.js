@@ -3,9 +3,9 @@ const Fairybread = require('fairybread')
 
 function navbar(state, emit) {
   const rawList = {
-    'Google+': '/community',
-    'Themes': '/themes',
-    'Create a Theme': '/create'
+    'Google+': 'https://plus.google.com/communities/103936578623101446195',
+    'Themes': '/',
+    'Create a Theme': '/'
   }
   const renderedList = Object.keys(rawList).map((link) => {
     return html`<li><a href="${rawList[link]}">[${link}]</a></li>`

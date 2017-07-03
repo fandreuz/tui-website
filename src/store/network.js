@@ -11,7 +11,11 @@ function requester(call, callback, emitter) {
 function normalizer(rawJson) {
   let result = {}
   Object.keys(rawJson).map((key) => {
-    result[key] = rawJson[key].$.value
+    let value = rawJson[key].$.value
+    if (value.length === 9) {
+      value = '#' + value.substring(3)
+    }
+    result[key] = value
   })
   return result
 }

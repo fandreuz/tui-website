@@ -13,7 +13,12 @@ function themeListItem(self, state, emit) {
   return html`
       <div class="theme_item">
         ${themePreview(files, state, emit)}
-        <span>${self[0]}</span>
+        <h1>${self[0]}</h1>
+        <div className="actions">
+          Download:
+          <a href="${files.xml.theme}">[Theme]</a>
+          <a href="${files.xml.suggestions}">[Suggestions]</a>
+        </div>
       </div>
     `
 }
