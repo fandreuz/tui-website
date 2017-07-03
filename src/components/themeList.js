@@ -30,6 +30,7 @@ function themeList(state, emit) {
           width: 23%;
           padding:1em;
           display:inline-block;
+          min-width:250px;
         `)
     sheet.add('.theme_item .actions', `
           color:white;
