@@ -39,6 +39,23 @@ function themeList(state, emit) {
           clear:both;
           display:block;
       `)
+    sheet.add('.theme_preview .input_area', `
+           display:block;
+           clear:both;
+           overflow:hidden;
+    `)
+    sheet.add('.theme_preview .input_area i', `
+              font-style:normal;
+    `)
+    sheet.add('.theme_preview .bottom-toolbar', `
+           display:flex;
+           clear:both;
+    `)
+    sheet.add('.theme_preview .bottom-toolbar i', `
+           flex:1;
+    `)
+    sheet.add('.theme_preview i', `
+      `)
 
     sheet.render()
     return sheet.id

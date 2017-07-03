@@ -10,6 +10,17 @@ function themePreview(files, state, emit) {
       <span class="input_color">$ Play store</span>
       <span class="output_color"> ${'-->'} com.android.playstore</span>
       <br>
+      <div className="input_area">
+      <i class="input_color">$</i>
+      <input class="input_color" type="text"/>
+      <i class="material-icons float-right">arrow_back</i>
+      </div>
+      <div className="bottom-toolbar">
+        <i class="material-icons md-18">close</i>
+        <i class="material-icons md-18">keyboard_arrow_up</i>
+        <i class="material-icons md-18">keyboard_arrow_down</i>
+        <i class="material-icons md-18">content_paste</i>
+      </div>
       </div>
     `
   function styles() {

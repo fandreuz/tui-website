@@ -1,7 +1,8 @@
 function styles(sheet, sv) {
   // Helper Classes
   sheet.addSpecial(`
-  @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700');`)
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700');
+  `)
   sheet.add('a', `
     color:inherit;
     text-decoration:none;
@@ -28,6 +29,12 @@ function styles(sheet, sv) {
   `)
   sheet.add('h1,h2,h3', `
     font-weight:300;
+  `)
+  sheet.add('.float-right', `
+    float:right;
+  `)
+  sheet.add('.float-left', `
+    float:left;
   `)
 }
 module.exports = styles
