@@ -4,9 +4,10 @@ function store(state, emitter) {
   emitter.on('getThemes', () => getThemes(state, emitter))
   emitter.on('getSingle', (data) => getSingle(data, state, emitter))
 
-  state.train = []
   state.themes = {}
+  state.themePage = 0
   state.themesLoaded = false
+  state.buildingTheme = {}
 
 }
 

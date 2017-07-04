@@ -5,7 +5,7 @@ const themeList = require('components/themeList')
 function mainView(state, emit) {
   return html`
     <body>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
       <div class="container" >
         ${header(state, emit)}

@@ -1,16 +1,17 @@
 const html = require('choo/html')
-const displayTrain = require('components/displayTrain')
 const header = require('components/header')
-
-function mainView(state, emit) {
+const themeBuilder = require('components/themeBuilder')
+function createView(state, emit) {
   return html`
     <body>
+         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
       <div class="container" >
         ${header(state, emit)}
+        ${themeBuilder(state, emit)}
       </div>
-      // Theme Builder goes here
     </body>
   `
 }
 
-module.exports = mainView
+module.exports = createView

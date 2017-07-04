@@ -1,16 +1,12 @@
 const html = require('choo/html')
 const Fairybread = require('fairybread')
-let styleReady = false
 function suggestion(name) {
   return html`<div class="box ${name}_bg_color ${name}_text_color">${name}</div>`
 }
 
-function themePreview(files, state, emit) {
-  const stylesRender = styles(files.theme, files.suggestions)
-  if (styleReady !== true) {
-    return html`<div>Loadding...</div>`
-  } else {
-    return html`
+function themePreview({theme, suggestions}, state, emit) {
+  const stylesRender = styles(theme, suggestions)
+  return html`
         <div class="${stylesRender} theme_preview">
         <span class="device_color">Mr Sloth</span>
         <span class="ram_color">Free ram: 356mb</span>
@@ -39,7 +35,6 @@ function themePreview(files, state, emit) {
         </div>
         </div>
       `
-  }
 }
 
 function styles(t, s) {
@@ -63,7 +58,6 @@ function styles(t, s) {
     })
 
     sheet.render()
-    styleReady = true
     return sheet.id
   }
 }
