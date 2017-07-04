@@ -22,6 +22,7 @@ function styles() {
   sheet.add('', `
         display:inline-block;
         text-align:center;
+        padding-bottom:4em;
       `)
   sheet.add('li', `
         display:inline-block;
