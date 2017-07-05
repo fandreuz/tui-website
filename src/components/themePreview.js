@@ -17,9 +17,9 @@ function themePreview({theme, suggestions}, state, emit) {
         <div className="input_area">
         <span class="input_color">$</span>
         <input class="input_color" type="text"/>
-        <i class="input_color material-icons float-right">arrow_back</i>
+        <i class="input_color enter_color material-icons float-right">arrow_back</i>
         </div>
-        <div className="bottom-toolbar input_color">
+        <div className="bottom-toolbar input_color toolbar_color">
           <i class="material-icons md-18">close</i>
           <i class="material-icons md-24">keyboard_arrow_up</i>
           <i class="material-icons md-24">keyboard_arrow_down</i>

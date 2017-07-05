@@ -8,7 +8,6 @@ function styles(sheet, sv) {
   sheet.add('.half', `
     width: 49%;
     display: inline-block;
-    min-height: 200px;
     margin-left: 1em;
     min-width:300px;
 
@@ -33,6 +32,7 @@ function styles(sheet, sv) {
           display:block;
           padding:1em;
           font-size:1.2em;
+          text-align:left;
       `)
   sheet.add('.theme_preview span', `
           clear:both;

@@ -1,8 +1,8 @@
 const html = require('choo/html')
 
-function input({ label, type, name, currentValue }, state, emit) {
+function input({ label, type, name, currentValue, file }, state, emit) {
   if (type === 'color') {
-    return html`<div className="swatch" style="background-color:${currentValue}">
+    return html`<div className="swatch"  style="background-color:${currentValue}">
       <label htmlFor="${name}">${label}</label>
       <input type="${type}" onchange=${setValue} value=${currentValue}/>
     </div>`
@@ -14,8 +14,7 @@ function input({ label, type, name, currentValue }, state, emit) {
       </div>
   `
   function setValue(e) {
-    console.log(e.target.value)
-    emit('editTheme', { 'value': e.target.value, 'name': name })
+    emit('updateThemeValue', { 'value': e.target.value, 'name': name, 'file': file })
   }
 }
 

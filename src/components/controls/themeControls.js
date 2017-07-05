@@ -8,7 +8,8 @@ function themeControls({ theme, suggestions }, state, emit) {
       label: key,
       name: key,
       type: 'color',
-      currentValue: theme[key]
+      currentValue: theme[key],
+      file: 'theme'
     }, state, emit)
   })
   const suggestionsInputs = Object.keys(suggestions).map((key) => {
@@ -17,9 +18,12 @@ function themeControls({ theme, suggestions }, state, emit) {
         label: key,
         name: key,
         type: 'color',
-        currentValue: suggestions[key]
+        currentValue: suggestions[key],
+        file: 'suggestions'
       }, state, emit)
-    } else {}
+    } else {
+      // other inputs
+    }
   })
 
   return html`
