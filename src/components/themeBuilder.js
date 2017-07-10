@@ -10,10 +10,6 @@ function themeBuilder(state, emit) {
     return html`
       <div className=${styles()}>
       <div className="theme_details">
-      <div className="half">
-            ${themePreview(defaults, state, emit)}
-            </div>
-          </div>
       <div className="theme_title half">
           <ul>
             <li>
@@ -25,8 +21,11 @@ function themeBuilder(state, emit) {
               <input type="text"/>
             </li>
           </ul>
+      </div>
+      <div className="half">
+            ${themePreview(defaults, state, emit)}
           </div>
-
+      </div>
           <div className="two-thirds third">
             ${themeControls(defaults, state, emit)}
           </div>
@@ -40,11 +39,20 @@ function styles() {
         display:inline-block;
         text-align:center;
         padding-bottom:4em;
+        max-width:100%;
+      `)
+  sheet.add('.theme_preview', `
+        max-width:300px;
+        margin: 0 auto;
       `)
   sheet.add('li', `
         display:inline-block;
         padding:0 1em;
       `)
+  sheet.add('.pallet', `
+    white-space: nowrap;
+    overflow-x: auto;
+  `)
   // Theme Builder Form
   sheet.add('.swatch', `
        padding: 1em;

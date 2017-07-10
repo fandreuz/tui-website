@@ -8,10 +8,10 @@ function styles(sheet, sv) {
     text-decoration:none;
   `)
   sheet.add('input[type="text"]', `
-  border:0px;
-   border-bottom:1px solid ${sv.textColor};
+   border:1px solid ${sv.textColor};
    background:#000;
    color: ${sv.textColor};
+   font-size:.1.7em;
   `)
   sheet.add('li,ul', `
     list-style:none;

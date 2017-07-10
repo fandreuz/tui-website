@@ -11,27 +11,29 @@ function themeControls({ theme, suggestions }, state, emit) {
       currentValue: theme[key],
       file: 'theme'
     }, state, emit)
+    // filter out overlay
   })
   const suggestionsInputs = Object.keys(suggestions).map((key) => {
-    if (key.indexOf('color') > -1) {
-      return input({
-        label: key,
-        name: key,
-        type: 'color',
-        currentValue: suggestions[key],
-        file: 'suggestions'
-      }, state, emit)
-    } else {
-      // other inputs
-    }
+    return input({
+      label: key,
+      name: key,
+      type: 'color',
+      currentValue: suggestions[key],
+      file: 'suggestions'
+    }, state, emit)
+    // filter out transparency and enabled
   })
 
   return html`
       <div className="controls">
         <h1>Theme.xml</h1>
-        ${themeInputs}
+        <div className="pallet">
+         ${themeInputs}
+        </div>
         <h1>Suggestions.xml</h1>
-        ${suggestionsInputs}
+        <div className="pallet">
+          ${suggestionsInputs}
+        </div>
       </div>
   `
 }
