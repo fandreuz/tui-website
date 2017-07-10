@@ -14,7 +14,7 @@ function themeBuilder(state, emit) {
             ${themePreview(defaults, state, emit)}
             </div>
           </div>
-      <div className="half">
+      <div className="theme_title half">
           <ul>
             <li>
               <label htmlFor="">Theme Name</label>

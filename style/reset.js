@@ -7,6 +7,12 @@ function styles(sheet, sv) {
     color:inherit;
     text-decoration:none;
   `)
+  sheet.add('input[type="text"]', `
+  border:0px;
+   border-bottom:1px solid ${sv.textColor};
+   background:#000;
+   color: ${sv.textColor};
+  `)
   sheet.add('li,ul', `
     list-style:none;
     padding:0;
