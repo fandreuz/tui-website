@@ -14,6 +14,7 @@ function themeControls({ theme, suggestions }, state, emit) {
     // filter out overlay
   })
   const suggestionsInputs = Object.keys(suggestions).map((key) => {
+    console.log(key)
     return input({
       label: key,
       name: key,

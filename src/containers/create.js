@@ -10,6 +10,12 @@ function createView(state, emit) {
         ${header(state, emit)}
         ${themeBuilder(state, emit)}
       </div>
+      <style>
+        @media only screen and (max-width: 500px) {
+          .two-thirds.third { width:100%; }
+
+        }
+      </style>
     </body>
   `
 }

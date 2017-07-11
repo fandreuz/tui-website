@@ -10,5 +10,6 @@ function store(state, emitter) {
   state.themePage = 0
   state.themesLoaded = false
   state.buildingTheme = null
+  state.fileExports = {'theme': '', 'suggestions': ''}
 }
 module.exports = store

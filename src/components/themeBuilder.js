@@ -1,6 +1,8 @@
 const html = require('choo/html')
 const themeControls = require('components/controls/themeControls')
 const themePreview = require('components/themePreview')
+const saveButton = require('components/controls/saveButton')
+
 const Fairybread = require('fairybread')
 
 function themeBuilder(state, emit) {
@@ -13,12 +15,10 @@ function themeBuilder(state, emit) {
       <div className="theme_title half">
           <ul>
             <li>
-              <label htmlFor="">Theme Name</label>
-              <input type="text"/>
+              ${saveButton('theme', 'buildingTheme', state, emit)}
             </li>
             <li>
-              <label htmlFor="">Author Name</label>
-              <input type="text"/>
+                ${saveButton('suggestion', 'buildingSuggestion', state, emit)}
             </li>
           </ul>
       </div>

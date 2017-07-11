@@ -10,6 +10,8 @@ function themePreview({theme, suggestions}, state, emit) {
         <div class="${stylesRender} theme_preview">
         <span class="device_color">Mr Sloth</span>
         <span class="ram_color">Free ram: 356mb</span>
+        <span class="clock_color">04:20pm</span>
+
         <br>
         <span class="input_color">$ Play store</span>
         <span class="output_color"> ${'-->'} com.android.playstore</span>
@@ -19,7 +21,7 @@ function themePreview({theme, suggestions}, state, emit) {
         <input class="input_color" type="text"/>
         <i class="input_color enter_color material-icons float-right">arrow_back</i>
         </div>
-        <div className="bottom-toolbar input_color toolbar_color">
+        <div className="bottom-toolbar input_color toolbar_bg toolbar_color">
           <i class="material-icons md-18">close</i>
           <i class="material-icons md-24">keyboard_arrow_up</i>
           <i class="material-icons md-24">keyboard_arrow_down</i>

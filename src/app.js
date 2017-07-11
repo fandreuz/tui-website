@@ -4,7 +4,6 @@ const app = choo()
 const store = require('store/store')
 const router = require('store/router')
 const styles = require('../style/main')
-styles.render()
 
 app.use(store)
 app.use(logger)
@@ -13,3 +12,4 @@ router.map((data) => {
 })
 
 app.mount('body')
+styles.render()
