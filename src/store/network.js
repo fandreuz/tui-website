@@ -10,12 +10,15 @@ function requester(call, callback, emitter) {
 // Changes XML to JSON
 function normalizer(rawJson) {
   let result = {}
+  console.log(rawJson)
   Object.keys(rawJson).map((key) => {
-    let value = rawJson[key].$.value
-    if (value.length === 9) {
-      value = '#' + value.substring(3)
+    if (rawJson[key].$) {
+      let value = rawJson[key].$.value
+      if (value.length === 9) {
+        value = '#' + value.substring(3)
+      }
+      result[key] = value
     }
-    result[key] = value
   })
   return result
 }

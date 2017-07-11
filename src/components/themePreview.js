@@ -10,7 +10,7 @@ function themePreview({theme, suggestions}, state, emit) {
         <div class="${stylesRender} theme_preview">
         <span class="device_color">Mr Sloth</span>
         <span class="ram_color">Free ram: 356mb</span>
-        <span class="clock_color">04:20pm</span>
+        <span class="time_color">04:20pm</span>
 
         <br>
         <span class="input_color">$ Play store</span>
@@ -21,7 +21,7 @@ function themePreview({theme, suggestions}, state, emit) {
         <input class="input_color" type="text"/>
         <i class="input_color enter_color material-icons float-right">arrow_back</i>
         </div>
-        <div className="bottom-toolbar input_color toolbar_bg toolbar_color">
+        <div className="bottom-toolbar input_color toolbar_color toolbar_bg">
           <i class="material-icons md-18">close</i>
           <i class="material-icons md-24">keyboard_arrow_up</i>
           <i class="material-icons md-24">keyboard_arrow_down</i>
@@ -44,10 +44,13 @@ function styles(t, s) {
     const sheet = new Fairybread('local')
     Object.keys(t).map((key) => {
       const splitKey = key.split('_')
-      if (splitKey[0] !== 'bg') {
+      if (splitKey[1] !== 'bg') {
         sheet.add(`.${key}`, `color:${t[key]};`)
       } else {
-        sheet.add(``, `background-color:${t[key]};`)
+        sheet.add(`.${key}`, `background-color:${t[key]};`)
+      }
+      if (key === 'bg_color') {
+          sheet.add(``, `background-color:${t[key]};`)
       }
     })
     Object.keys(s).map((key) => {

@@ -14,15 +14,17 @@ function themeControls({ theme, suggestions }, state, emit) {
     // filter out overlay
   })
   const suggestionsInputs = Object.keys(suggestions).map((key) => {
-    console.log(key)
-    return input({
-      label: key,
-      name: key,
-      type: 'color',
-      currentValue: suggestions[key],
-      file: 'suggestions'
-    }, state, emit)
-    // filter out transparency and enabled
+    if (key.indexOf('color') > -1 || key.indexOf('bg') > -1) {
+      return input({
+        label: key,
+        name: key,
+        type: 'color',
+        currentValue: suggestions[key],
+        file: 'suggestions'
+      }, state, emit)
+    } else {
+      // other inputs
+    }
   })
 
   return html`
