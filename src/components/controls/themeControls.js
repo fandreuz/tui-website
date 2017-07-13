@@ -14,17 +14,20 @@ function themeControls({ theme, suggestions }, state, emit) {
     // filter out overlay
   })
   const suggestionsInputs = Object.keys(suggestions).map((key) => {
+    let type
     if (key.indexOf('color') > -1 || key.indexOf('bg') > -1) {
-      return input({
-        label: key,
-        name: key,
-        type: 'color',
-        currentValue: suggestions[key],
-        file: 'suggestions'
-      }, state, emit)
-    } else {
-      // other inputs
+      type = 'color'
     }
+    if (key.indexOf('enabled') > -1) {
+      type = 'checkbox'
+    }
+    return input({
+      label: key,
+      name: key,
+      type: type,
+      currentValue: suggestions[key],
+      file: 'suggestions'
+    }, state, emit)
   })
 
   return html`

@@ -50,9 +50,9 @@ function styles() {
         padding:0 1em;
       `)
   sheet.add('.pallet', `
-    white-space: nowrap;
-    overflow-x: auto;
-  `)
+        white-space: nowrap;
+        overflow-x: auto;
+      `)
   // Theme Builder Form
   sheet.add('.swatch', `
        padding: 1em;
