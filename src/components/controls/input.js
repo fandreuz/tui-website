@@ -1,13 +1,10 @@
 const html = require('choo/html')
-
+const swatch = require('components/controls/swatch')
 function input({ label, type, name, currentValue, file }, state, emit) {
 
   switch (type) {
     case 'color':
-      return html`<div className="swatch"  style="background-color:${currentValue}">
-      <label htmlFor="${name}">${label}</label>
-      <input type="${type}" onchange=${setValue} value=${currentValue}/>
-      </div>`
+      return swatch(label, type, name, currentValue, file, setValue)
     case 'checkbox':
       return html`<div className="swatch"  style="background-color:${currentValue}">
       <label htmlFor="${name}">${label}</label>
