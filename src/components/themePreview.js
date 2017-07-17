@@ -50,7 +50,7 @@ function styles(t, s) {
         sheet.add(`.${key}`, `background-color:${t[key]};`)
       }
       if (key === 'bg_color') {
-          sheet.add(``, `background-color:${t[key]};`)
+        sheet.add(``, `background-color:${t[key]};`)
       }
     })
     Object.keys(s).map((key) => {

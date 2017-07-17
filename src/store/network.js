@@ -10,7 +10,6 @@ function requester(call, callback, emitter) {
 // Changes XML to JSON
 function normalizer(rawJson) {
   let result = {}
-  console.log(rawJson)
   Object.keys(rawJson).map((key) => {
     if (rawJson[key].$) {
       let value = rawJson[key].$.value

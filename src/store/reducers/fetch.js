@@ -19,9 +19,9 @@ function getSingle(data, state, emitter) {
       'method': 'GET',
       'url': data.xmls.theme_j
     },
-    'suggestion': {
+    'suggestions': {
       'method': 'GET',
-      'url': data.xmls.suggestion_j
+      'url': data.xmls.suggestions_j
     }
   }
   state.themes[data.name].files = {}
@@ -37,7 +37,7 @@ function getSingle(data, state, emitter) {
   const storeSuggestion = (respond) => { storeFile(respond, 'SUGGESTIONS') }
 
   requester(calls.theme, storeTheme, emitter)
-  requester(calls.suggestion, storeSuggestion, emitter)
+  requester(calls.suggestions, storeSuggestion, emitter)
 }
 
 const fetchFiles = {

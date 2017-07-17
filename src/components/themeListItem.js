@@ -1,10 +1,11 @@
 const html = require('choo/html')
 const themePreview = require('components/themePreview')
+const isMobile = false // create a check function
 
 function themeListItem(self, state, emit) {
   const files = {
-    'theme': self[1].files['THEME'],
-    'suggestions': self[1].files['SUGGESTIONS'],
+    'theme': self[1].files['THEME'], // json vales
+    'suggestions': self[1].files['SUGGESTIONS'], // json vales
     'xml': {
       'theme': self[1].theme,
       'suggestions': self[1].suggestions
@@ -14,13 +15,24 @@ function themeListItem(self, state, emit) {
       <div class="theme_item">
         ${themePreview(files, state, emit)}
         <h1>${self[0]}</h1>
-        <div className="actions">
-          Download:
-          <a download="theme.xml" target="_blank" href="${files.xml.theme}">[Theme]</a>
-          <a download="suggestions.xml;" target="_blank" href="${files.xml.suggestions}">[Suggestions]</a>
-        </div>
+        ${actions(isMobile, files)}
       </div>
     `
+}
+function actions(isMobile, files) {
+  if (!isMobile) {
+    return html` <div className="actions">
+            Download:
+            <a download="theme.xml" target="_blank" href="${files.xml.theme}">[Theme]</a>
+            <a download="suggestions.xml;" target="_blank" href="${files.xml.suggestions}">[Suggestions]</a>
+          </div>`
+  } else {
+    return html` <div className="actions">
+      Open in Tui:
+      <a download="theme.xml" target="_blank" href="${files.xml.theme}">[Theme]</a>
+      <a download="suggestions.xml;" target="_blank" href="${files.xml.suggestions}">[Suggestions]</a>
+      </div>`
+  }
 }
 
 module.exports = themeListItem

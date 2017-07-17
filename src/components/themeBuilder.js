@@ -8,7 +8,6 @@ const Fairybread = require('fairybread')
 function themeBuilder(state, emit) {
   const defaults = state.buildingTheme
   if (defaults !== null) {
-    console.log(defaults)
     return html`
       <div className=${styles()}>
       <div className="theme_details">
@@ -18,7 +17,7 @@ function themeBuilder(state, emit) {
               ${saveButton('theme', 'buildingTheme', state, emit)}
             </li>
             <li>
-                ${saveButton('suggestion', 'buildingSuggestion', state, emit)}
+                ${saveButton('suggestions', 'buildingSuggestion', state, emit)}
             </li>
           </ul>
       </div>

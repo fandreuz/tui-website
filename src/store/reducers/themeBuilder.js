@@ -2,7 +2,6 @@ const { themeXML, suggestionXML } = require('utils/fileNormalizer')
 function setDefault(data, state, emitter) {
   if (state.buildingTheme === null) {
     if (typeof data.theme !== 'undefined' && typeof data.suggestions !== 'undefined') {
-      console.log('DATA', data)
       const theme = Object.assign({}, data.theme)
       const suggestions = Object.assign({}, data.suggestions)
 
