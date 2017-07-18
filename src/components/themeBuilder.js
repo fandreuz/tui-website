@@ -1,7 +1,13 @@
 const html = require('choo/html')
 const themeControls = require('components/controls/themeControls')
 const themePreview = require('components/themePreview')
-const saveButton = require('components/controls/saveButton')
+const saveButton = require('components/controls/common/saveButton')
+const battery = require('components/controls/display/battery')
+const ram = require('components/controls/display/ram')
+const time = require('components/controls/display/time')
+const storage = require('components/controls/display/storage')
+
+const sv = require('../../style/vars')
 
 const Fairybread = require('fairybread')
 
@@ -11,22 +17,22 @@ function themeBuilder(state, emit) {
     return html`
       <div className=${styles()}>
       <div className="theme_details">
-      <div className="theme_title half">
-          <ul>
-            <li>
-              ${saveButton('theme', 'buildingTheme', state, emit)}
-            </li>
-            <li>
-                ${saveButton('suggestions', 'buildingSuggestion', state, emit)}
-            </li>
-          </ul>
+      <div className="theme_settings half">
+        ${battery(state, emit)}
+        ${ram(state, emit)}
+        ${time(state, emit)}
+        ${storage(state, emit)}
       </div>
-      <div className="half">
+      <div id="customTheme" className="half">
             ${themePreview(defaults, state, emit)}
           </div>
       </div>
           <div className="two-thirds third">
             ${themeControls(defaults, state, emit)}
+          </div>
+          <div id="downloads">
+            ${saveButton('theme', 'buildingTheme', state, emit)}
+            ${saveButton('suggestions', 'buildingSuggestion', state, emit)}
           </div>
       </div>
     `
@@ -44,6 +50,9 @@ function styles() {
         max-width:300px;
         margin: 0 auto;
       `)
+  sheet.add('.theme_settings', `
+        float:left;
+      `)
   sheet.add('li', `
         display:inline-block;
         padding:0 1em;
@@ -53,16 +62,15 @@ function styles() {
         overflow-x: auto;
       `)
   // Theme Builder Form
-  sheet.add('.swatch', `
-       padding: 1em;
+  const formStyle = `padding: 1em;
       position: relative;
       display: inline-block;
       max-width: 175px;
       min-height: 40px;
       border: 1px solid;
       margin: 0px 5px 5px 0px;
-      width: 27vw;
-      `)
+      width: 27vw;`
+  sheet.add('.swatch', formStyle)
   sheet.add('.swatch label', `
         padding:1em;
         position:absolute;
@@ -78,7 +86,14 @@ function styles() {
           height:100%;
           opacity:0;
       `)
-
+  sheet.add('.checkbox', formStyle)
+  sheet.add('.setting', `
+    background:${sv.textColor};
+    color:#000;
+    display:inline-block;
+    padding:1em;
+    margin: 0.5em;
+  `)
   sheet.render()
   return sheet.id
 }

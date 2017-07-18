@@ -24,8 +24,14 @@ function updateThemeValue(data, state, emitter) {
   emitter.emit('render')
 }
 
+function updateThemeViewSettings(data, state, emitter) {
+  state.themeViewSettings[data[0]] = data[1]
+  emitter.emit('render')
+}
+
 const themeBuilder = {
   setDefault,
-  updateThemeValue
+  updateThemeValue,
+  updateThemeViewSettings
 }
 module.exports = themeBuilder

@@ -8,9 +8,13 @@ function themePreview({theme, suggestions}, state, emit) {
   const stylesRender = styles(theme, suggestions)
   return html`
         <div class="${stylesRender} theme_preview">
-        <span class="device_color">Mr Sloth</span>
-        <span class="ram_color">Free ram: 356mb</span>
-        <span class="time_color">04:20pm</span>
+        <span class="device_color">Mr Sloth : user</span>
+        <span class="ram_color">Available RAM: 18.49%</span>
+        <span class="battery_color_high">Available RAM: 18.49%</span>
+
+        <span class="time_color">07/19/17 06.11</span>
+        <span class="storage_color">Internal Storage: 10.04%</span>
+
 
         <br>
         <span class="input_color">$ Play store</span>

@@ -1,6 +1,6 @@
 const html = require('choo/html')
-const swatch = require('components/controls/swatch')
-const checkbox = require('components/controls/checkbox')
+const swatch = require('components/controls/common/swatch')
+const checkbox = require('components/controls/common/checkbox')
 
 function input({label, type, name, currentValue, file}, state, emit) {
   console.log('type', type)
