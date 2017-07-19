@@ -13,7 +13,30 @@ function createView(state, emit) {
       <style>
         @media only screen and (max-width: 500px) {
           .two-thirds.third { width:100%; }
+          .half {
+            width:100%;
+          }
+          .theme_settngs {
+            text-align:center;
+          }
+          .setting {
+          clear:none !important;
+          float:none !important;
+          }
+        }
 
+        html {
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar {
+            width: 0px;  /* remove scrollbar space */
+            background: transparent;  /* optional: just make scrollbar invisible */
+        }
+        /* optional: show position indicator in red */
+        ::-webkit-scrollbar-thumb {
+            border-bottom: 1px solid #14FF00;
+            height:10px;
         }
       </style>
     </body>

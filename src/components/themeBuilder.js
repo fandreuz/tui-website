@@ -3,9 +3,7 @@ const themeControls = require('components/controls/themeControls')
 const themePreview = require('components/themePreview')
 const saveButton = require('components/controls/common/saveButton')
 const battery = require('components/controls/display/battery')
-const ram = require('components/controls/display/ram')
-const time = require('components/controls/display/time')
-const storage = require('components/controls/display/storage')
+const showToggle = require('components/controls/display/showToggle')
 
 const sv = require('../../style/vars')
 
@@ -19,9 +17,10 @@ function themeBuilder(state, emit) {
       <div className="theme_details">
       <div className="theme_settings half">
         ${battery(state, emit)}
-        ${ram(state, emit)}
-        ${time(state, emit)}
-        ${storage(state, emit)}
+        ${showToggle('time', 'time_color', state, emit)}
+        ${showToggle('ram', 'ram_color', state, emit)}
+        ${showToggle('storage', 'storage_color', state, emit)}
+        ${showToggle('device', 'device_color', state, emit)}
       </div>
       <div id="customTheme" className="half">
             ${themePreview(defaults, state, emit)}
@@ -52,6 +51,7 @@ function styles() {
       `)
   sheet.add('.theme_settings', `
         float:left;
+        padding-bottom:1em;
       `)
   sheet.add('li', `
         display:inline-block;
@@ -70,14 +70,15 @@ function styles() {
       border: 1px solid;
       margin: 0px 5px 5px 0px;
       width: 27vw;`
-  sheet.add('.swatch', formStyle)
-  sheet.add('.swatch label', `
+  const formLabelStyle = `
         padding:1em;
         position:absolute;
         background:#000;
         bottom:0px;
         left:0px;
-      `)
+  `
+  sheet.add('.swatch', formStyle)
+  sheet.add('.swatch label', formLabelStyle)
   sheet.add('.swatch input[type="color"]', `
           position:absolute;
           top:0px;
@@ -87,13 +88,20 @@ function styles() {
           opacity:0;
       `)
   sheet.add('.checkbox', formStyle)
+  sheet.add('.checkbox label', formLabelStyle)
+
   sheet.add('.setting', `
     background:${sv.textColor};
     color:#000;
     display:inline-block;
     padding:1em;
     margin: 0.5em;
+    clear:both;
+    float:right;
   `)
+  sheet.add('#downloads', `font-size:2em; padding:1em 0em;`)
+  sheet.add('#downloads a', `clear:both; width:100%; display:block; margin:1em;`)
+
   sheet.render()
   return sheet.id
 }

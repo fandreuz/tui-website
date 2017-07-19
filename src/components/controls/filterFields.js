@@ -7,10 +7,12 @@ function filterFields(key, state, emit, data, filename) {
   if (key.indexOf('enabled') > -1) {
     type = 'checkbox'
   }
-  if (key.indexOf('enabled') > -1) {
-    type = 'checkbox'
+  if (key.indexOf('transparent') > -1 && filename === 'suggestions') {
+    type = 'transparent'
+    console.log('.', data.transparent)
+    console.log('[]', data['transparent'])
+
   }
-  console.log('themeControls type', type)
   return input({
     label: key,
     name: key,

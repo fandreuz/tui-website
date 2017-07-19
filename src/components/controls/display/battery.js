@@ -1,7 +1,6 @@
 const html = require('choo/html')
 function battery(state, emit) {
   let status = state.themeViewSettings.battery
-  let output = ``
   return html`<div className="setting battery" onclick=${toggleVisable}>
       <label onclick=${toggleVisable} >show_battery: ${status}</label>
       <style>

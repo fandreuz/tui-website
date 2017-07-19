@@ -1,24 +1,24 @@
-const html = require('choo/html')
 const swatch = require('components/controls/common/swatch')
 const checkbox = require('components/controls/common/checkbox')
+const transparent = require('components/controls/suggestions/transparent')
 
 function input({label, type, name, currentValue, file}, state, emit) {
-  console.log('type', type)
   switch (type) {
-    case 'color':
-      return swatch(label, name, currentValue, file, setValue)
     case 'checkbox':
-      return checkbox(label, name, currentValue, file, setValue)
+      return checkbox(label, name, currentValue, file, setCustomValue)
+    case 'transparent':
+      console.log(name, currentValue)
+      return transparent(label, name, currentValue, file, setCustomValue)
     default:
-      return html`
-      <div className="row">
-      <label htmlFor="${name}">${label}</label>
-      <input type="${type}"/>
-      </div>`
+      return swatch(label, name, currentValue, file, setValue)
+
   }
 
   function setValue(e) {
     emit('updateThemeValue', { 'value': e.target.value, 'name': name, 'file': file })
+  }
+  function setCustomValue(value) {
+    emit('updateThemeValue', { 'value': value, 'name': name, 'file': file })
   }
 }
 
