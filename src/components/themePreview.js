@@ -10,12 +10,9 @@ function themePreview({theme, suggestions}, state, emit) {
         <div class="${stylesRender} theme_preview">
         <span class="device_color">Mr Sloth : user</span>
         <span class="ram_color">Available RAM: 18.49%</span>
-        <span class="battery_color_high">Available RAM: 18.49%</span>
-
+        <span class="battery_color_high">Battery: 35.43%</span>
         <span class="time_color">07/19/17 06.11</span>
         <span class="storage_color">Internal Storage: 10.04%</span>
-
-
         <br>
         <span class="input_color">$ Play store</span>
         <span class="output_color"> ${'-->'} com.android.playstore</span>
@@ -44,6 +41,7 @@ function themePreview({theme, suggestions}, state, emit) {
 }
 
 function styles(t, s) {
+  const bgImg = '/imgs/default-bg.jpg';
   if (typeof t !== 'undefined' && typeof s !== 'undefined') {
     const sheet = new Fairybread('local')
     Object.keys(t).map((key) => {
@@ -54,7 +52,7 @@ function styles(t, s) {
         sheet.add(`.${key}`, `background-color:${t[key]};`)
       }
       if (key === 'bg_color') {
-        sheet.add(``, `background-color:${t[key]};`)
+        sheet.add(``, `background-image:url(); background-color:${t[key]}; `)
       }
     })
     Object.keys(s).map((key) => {
@@ -65,7 +63,6 @@ function styles(t, s) {
         sheet.add(`.${key}`, `background:${s[key]};`)
       }
     })
-
     sheet.render()
     return sheet.id
   }

@@ -87,6 +87,28 @@ function styles() {
           height:100%;
           opacity:0;
       `)
+  sheet.add('.swatch button', `
+    position:absolute;
+    z-index:9;
+    right:0px;
+    border:0px;
+    font-size:2em;
+    color:${sv.textColor};
+    background:none;
+    top:0px;
+    height: 32px;
+    overflow: hidden;
+  `)
+  sheet.add('.swatch button:active', `
+    background:${sv.textColor};
+    color:#000;
+  `)
+  sheet.add('.swatch .minus', `
+    top:auto;
+    bottom: 0px;
+    font-size: 3em;
+    text-align: center;
+  `)
   sheet.add('.checkbox', formStyle)
   sheet.add('.checkbox label', formLabelStyle)
 

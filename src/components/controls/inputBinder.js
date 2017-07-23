@@ -1,4 +1,6 @@
 const swatch = require('components/controls/common/swatch')
+const overlay = require('components/controls/theme/overlay')
+
 const checkbox = require('components/controls/common/checkbox')
 const transparent = require('components/controls/suggestions/transparent')
 
@@ -7,8 +9,9 @@ function input({label, type, name, currentValue, file}, state, emit) {
     case 'checkbox':
       return checkbox(label, name, currentValue, file, setCustomValue)
     case 'transparent':
-      console.log(name, currentValue)
       return transparent(label, name, currentValue, file, setCustomValue)
+    case 'overlay':
+      return overlay(label, name, currentValue, file, setCustomValue)
     default:
       return swatch(label, name, currentValue, file, setValue)
 
