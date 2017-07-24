@@ -1,5 +1,5 @@
 const html = require('choo/html')
-const themePreview = require('components/themePreview')
+const preview = require('components/preview/preview')
 const isMobile = false // create a check function
 
 function themeListItem(self, state, emit) {
@@ -13,7 +13,7 @@ function themeListItem(self, state, emit) {
   }
   return html`
       <div class="theme_item">
-        ${themePreview(files, state, emit)}
+        ${preview(files, state, emit)}
         <h1>${self[0]}</h1>
         ${actions(isMobile, files)}
       </div>

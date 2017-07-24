@@ -1,42 +1,6 @@
-const html = require('choo/html')
-const themeControls = require('components/controls/themeControls')
-const themePreview = require('components/themePreview')
-const saveButton = require('components/controls/common/saveButton')
-const battery = require('components/controls/display/battery')
-const showToggle = require('components/controls/display/showToggle')
-
-const sv = require('../../style/vars')
-
+const sv = require('../../../style/vars')
 const Fairybread = require('fairybread')
 
-function themeBuilder(state, emit) {
-  const defaults = state.buildingTheme
-  if (defaults !== null) {
-    return html`
-      <div className=${styles()}>
-      <div className="theme_details">
-      <div className="theme_settings half">
-        ${battery(state, emit)}
-        ${showToggle('time', 'time_color', state, emit)}
-        ${showToggle('ram', 'ram_color', state, emit)}
-        ${showToggle('storage', 'storage_color', state, emit)}
-        ${showToggle('device', 'device_color', state, emit)}
-      </div>
-      <div id="customTheme" className="half">
-            ${themePreview(defaults, state, emit)}
-          </div>
-      </div>
-          <div className="two-thirds third">
-            ${themeControls(defaults, state, emit)}
-          </div>
-          <div id="downloads">
-            ${saveButton('theme', 'buildingTheme', state, emit)}
-            ${saveButton('suggestions', 'buildingSuggestion', state, emit)}
-          </div>
-      </div>
-    `
-  }
-}
 function styles() {
   const sheet = new Fairybread('local')
   sheet.add('', `
@@ -127,5 +91,4 @@ function styles() {
   sheet.render()
   return sheet.id
 }
-
-module.exports = themeBuilder
+module.exports = styles

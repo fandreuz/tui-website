@@ -1,6 +1,6 @@
 const html = require('choo/html')
 const header = require('components/header')
-const themeBuilder = require('components/themeBuilder')
+const builder = require('components/controls/builder/builder')
 function createView(state, emit) {
   return html`
     <body>
@@ -8,7 +8,7 @@ function createView(state, emit) {
       rel="stylesheet">
       <div class="container" >
         ${header(state, emit)}
-        ${themeBuilder(state, emit)}
+        ${builder(state, emit)}
       </div>
       <style>
         @media only screen and (max-width: 500px) {

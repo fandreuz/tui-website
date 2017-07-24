@@ -1,7 +1,7 @@
 const html = require('choo/html')
 const filterFields = require('components/controls/filterFields')
 
-function themeControls({ theme, suggestions }, state, emit) {
+function previewControls({ theme, suggestions }, state, emit) {
   console.log(suggestions)
   const themeInputs = Object.keys(theme).map((key) => {
     return filterFields(key, state, emit, theme, 'theme')
@@ -25,4 +25,4 @@ function themeControls({ theme, suggestions }, state, emit) {
   `
 }
 
-module.exports = themeControls
+module.exports = previewControls
