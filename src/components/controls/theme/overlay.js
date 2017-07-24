@@ -1,7 +1,6 @@
 const html = require('choo/html')
-const { hexToRGB } = require('utils/colors')
 function overlay(label, name, currentValue, file, setValue) {
-
+  console.log(currentValue)
   return html`<div className="swatch overlay" style="background-color:${currentValue}">
       <label htmlFor="${name}">${label}</label>
       <input type="color" onchange=${setValue} value=${currentValue}/>

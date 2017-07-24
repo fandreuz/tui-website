@@ -8,6 +8,7 @@ const styles = require('./styles')
 
 function builder(state, emit) {
   const defaults = state.buildingTheme
+  console.log(defaults)
   if (defaults !== null) {
     return html`
       <div className=${styles()}>
