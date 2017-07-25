@@ -1,4 +1,4 @@
-function hexToRGB(hex, alpha) {
+function HEX2RGBA(hex, alpha) {
   let bigint = parseInt(hex, 16)
   let r = (bigint >> 16) & 255
   let g = (bigint >> 8) & 255
@@ -10,7 +10,17 @@ function hexToRGB(hex, alpha) {
     return `rgb(${r},${g},${b})`
   }
 }
+function RGBA2HEX(rgb) {
+  rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i)
+  console.log('RGBA2HEX', rgb)
+  return (rgb && rgb.length === 4) ? '#' +
+  ('0' + parseInt(rgb[1], 10).toString(16)).slice(-2) +
+  ('0' + parseInt(rgb[2], 10).toString(16)).slice(-2) +
+  ('0' + parseInt(rgb[3], 10).toString(16)).slice(-2) : ''
+}
+
 function convertAlpha(opacity) {
+  // Add flip array option here to switch between hex and rgba
   const matrix = {
     'FF': '1',
     'F2': '0.95',
@@ -32,16 +42,18 @@ function convertAlpha(opacity) {
     '26': '0.15',
     '1A': '0.10',
     '0D': '0.5',
-    '00': '00'
+    '00': '0'
   }
-  let result = matrix[`o${opacity}`];
+  let result = matrix[`${opacity.toUpperCase()}`]
   if (typeof result === 'undefined') {
-    result = '00'
+    console.log(opacity, 'undefined')
+    result = '0'
   }
   return result
 }
 
 module.exports = {
-  hexToRGB,
+  HEX2RGBA,
+  RGBA2HEX,
   convertAlpha
 }

@@ -1,5 +1,5 @@
 // you could put api stuff here
-const { hexToRGB, convertAlpha } = require('utils/colors')
+const { HEX2RGBA, convertAlpha } = require('utils/colors')
 
 function requester(call, callback, emitter) {
   let xhr = new XMLHttpRequest() // eslint-disable-line
@@ -18,8 +18,9 @@ function normalizer(rawJson) {
         const noHash = value.substring(1)
         const hexopacity = noHash.substring(0, 2)
         const alpha = convertAlpha(hexopacity)
-        const rgbaVal = hexToRGB(value.substring(3), alpha)
-        value = '#' + value.substring(3)
+        const rgbaVal = HEX2RGBA(value.substring(3), alpha)
+        console.log(key, rgbaVal)
+        value = rgbaVal
       }
       result[key] = value
     }
