@@ -5,6 +5,7 @@ function suggestion(name) {
 }
 
 function themePreview({theme, suggestions}, state, emit) {
+  console.log(state)
   const stylesRender = styles(theme, suggestions)
   return html`
         <div class="${stylesRender} theme_preview">

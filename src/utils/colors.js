@@ -1,9 +1,22 @@
+function arrayFlip(trans) {
+  let key
+  let tmpAr = {}
+  for (key in trans) {
+    if (trans.hasOwnProperty(key)) {
+      tmpAr[trans[key]] = key
+    }
+  }
+  return tmpAr
+}
+
 function HEX2RGBA(hex, alpha) {
+  if (hex.indexOf('#') > -1) {
+    hex = hex.replace('#', '')
+  }
   let bigint = parseInt(hex, 16)
   let r = (bigint >> 16) & 255
   let g = (bigint >> 8) & 255
   let b = bigint & 255
-
   if (alpha) {
     return `rgba(${r},${g},${b},${alpha})`
   } else {
@@ -12,15 +25,16 @@ function HEX2RGBA(hex, alpha) {
 }
 function RGBA2HEX(rgb) {
   rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i)
-  console.log('RGBA2HEX', rgb)
+  console.log(rgb)
   return (rgb && rgb.length === 4) ? '#' +
-  ('0' + parseInt(rgb[1], 10).toString(16)).slice(-2) +
-  ('0' + parseInt(rgb[2], 10).toString(16)).slice(-2) +
-  ('0' + parseInt(rgb[3], 10).toString(16)).slice(-2) : ''
+    ('0' + parseInt(rgb[1], 10).toString(16)).slice(-2) +
+    ('0' + parseInt(rgb[2], 10).toString(16)).slice(-2) +
+    ('0' + parseInt(rgb[3], 10).toString(16)).slice(-2) : ''
 }
 
-function convertAlpha(opacity) {
+function convertAlpha(opacity, direction) {
   // Add flip array option here to switch between hex and rgba
+  let result
   const matrix = {
     'FF': '1',
     'F2': '0.95',
@@ -44,10 +58,17 @@ function convertAlpha(opacity) {
     '0D': '0.5',
     '00': '0'
   }
-  let result = matrix[`${opacity.toUpperCase()}`]
-  if (typeof result === 'undefined') {
-    console.log(opacity, 'undefined')
-    result = '0'
+  if (direction === 'FROM_HEX') {
+    result = matrix[`${opacity.toUpperCase()}`]
+    if (typeof result === 'undefined') {
+      result = '1'
+    }
+  } else {
+    const flipMatrix = arrayFlip(matrix)
+    result = flipMatrix[`${opacity}`]
+    if (typeof result === 'undefined') {
+      result = 'FF'
+    }
   }
   return result
 }
