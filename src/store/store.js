@@ -17,7 +17,7 @@ function store(state, emitter) {
     'time': true,
     'ram': true,
     'device': true,
-    'wallpaper': '/imgs/default-bg.jpg'
+    'overlay': false
   }
   state.fileExports = {'theme': '', 'suggestions': ''}
 }

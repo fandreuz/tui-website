@@ -20,16 +20,21 @@ function HEX2RGBA(hex, alpha) {
   if (alpha) {
     return `rgba(${r},${g},${b},${alpha})`
   } else {
-    return `rgb(${r},${g},${b})`
+    return `rgba(${r},${g},${b},${1})`
   }
 }
-function RGBA2HEX(rgb) {
+function RGBA2HEX(rgb, opacity) {
   rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i)
-  console.log(rgb)
-  return (rgb && rgb.length === 4) ? '#' +
-    ('0' + parseInt(rgb[1], 10).toString(16)).slice(-2) +
-    ('0' + parseInt(rgb[2], 10).toString(16)).slice(-2) +
-    ('0' + parseInt(rgb[3], 10).toString(16)).slice(-2) : ''
+  let result = false
+  if (rgb && rgb.length === 4) {
+    const newOpacity = opacity ? convertAlpha(opacity, 'TO_HEX') : ''
+    result = newOpacity +
+      ('0' + parseInt(rgb[1], 10).toString(16)).slice(-2) +
+      ('0' + parseInt(rgb[2], 10).toString(16)).slice(-2) +
+      ('0' + parseInt(rgb[3], 10).toString(16)).slice(-2)
+  }
+  return result
+
 }
 
 function convertAlpha(opacity, direction) {

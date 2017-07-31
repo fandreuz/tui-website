@@ -18,9 +18,7 @@ function normalizer(rawJson) {
         const noHash = value.substring(1)
         const hexopacity = noHash.substring(0, 2)
         const alpha = convertAlpha(hexopacity, 'FROM_HEX')
-        console.log(value)
-        const rgbaVal = HEX2RGBA(value)
-        console.log(key, rgbaVal)
+        const rgbaVal = HEX2RGBA(value, alpha)
         value = rgbaVal
       }
       result[key] = value

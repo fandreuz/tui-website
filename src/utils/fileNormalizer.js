@@ -10,8 +10,8 @@ function themeXML(data) {
     if (data[key].indexOf('#') > -1) {
       cleanColor = data[key]
     } else {
-      console.log(data[key])
-      const hexAlpha = data[key].slice(-2).replace(')')
+      const hexAlpha = data[key].split(',')[3].replace(')', '')
+      console.log('hexAlpha', key, hexAlpha)
       cleanColor = RGBA2HEX(data[key], hexAlpha)
     }
     return `<${key} value="${cleanColor}"/>`

@@ -33,6 +33,7 @@ function styles(sheet, sv) {
           padding:1em;
           font-size:1.2em;
           text-align:left;
+          position:relative;
       `)
   sheet.add('.theme_preview span', `
           clear:both;
@@ -63,6 +64,27 @@ function styles(sheet, sv) {
            flex:1;
            font-size:1em;
     `)
+  sheet.add(`.theme_preview .upperlayer`, `
+  position:relative;
+  z-index:4;
+  `)
+  sheet.add(`.theme_preview .overlay_color`, `
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  z-index:1;
+  `)
+  sheet.add(`.theme_preview .bg_image`, `
+  position:absolute;
+  top:0px;
+  z-index:-1;
+  left:0px;
+  width:100%;
+  height:100%;
+
+  `)
   sheet.add('.theme_preview input', `
           background:transparent;
           border:0px;

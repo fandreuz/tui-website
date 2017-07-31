@@ -1,6 +1,5 @@
 const html = require('choo/html')
 function transparent(label, name, currentValue, file, setValue) {
-  console.log('transparent', currentValue)
   return html`<div className="checkbox" onclick=${setCustomValue}>
       <label>${label} ${currentValue}</label>
        <style>
