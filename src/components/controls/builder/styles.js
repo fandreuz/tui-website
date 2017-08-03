@@ -82,6 +82,7 @@ function styles() {
     display:inline-block;
     padding:1em;
     margin: 0.5em;
+    width:120px;
     clear:both;
     float:right;
   `)
