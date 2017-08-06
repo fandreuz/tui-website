@@ -12,7 +12,6 @@ function setDefault(data, state, emitter) {
       state.buildingTheme = newTheme
       state.fileExports['theme'] = themeXML(theme)
       state.fileExports['suggestions'] = suggestionXML(suggestions)
-
       emitter.emit('render')
     }
   }

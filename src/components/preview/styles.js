@@ -6,7 +6,6 @@ function styles(t, s, v) {
     const sheet = new Fairybread('local')
     Object.keys(t).map((key) => {
       const splitKey = key.split('_')
-      console.log(key,  v.overlay)
       if (key === 'bg_color' && v.overlay === false) {
         sheet.add(``, `
         background-color:${t[key]}; `)

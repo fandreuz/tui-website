@@ -12,11 +12,11 @@ function previewControls({ theme, suggestions }, state, emit) {
 
   return html`
       <div className="controls">
-        <h1>Theme.xml</h1>
+        <h1>theme.xml</h1>
         <div className="pallet">
          ${themeInputs}
         </div>
-        <h1>Suggestions.xml</h1>
+        <h1>suggestions.xml</h1>
         <div className="pallet">
           ${suggestionsInputs}
         </div>

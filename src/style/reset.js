@@ -20,7 +20,7 @@ function styles(sheet, sv) {
     padding:0px;
     font-size:10px;
     background:${sv.background};
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'lucida_consoleregular', monospace;
     color:${sv.textColor};
   `)
   sheet.add('header', `

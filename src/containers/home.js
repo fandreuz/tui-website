@@ -12,6 +12,15 @@ function mainView(state, emit) {
         ${themeList(state, emit)}
       </div>
       <style>
+
+        @font-face {
+          font-family: 'lucida_consoleregular';
+          src: url('/fonts/lucon-webfont.woff2') format('woff2'),
+                url('/fonts/lucon-webfont.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+
+        }
        @media only screen and (max-width: 500px) {
           .theme_list {
             overflow:hidden;

@@ -87,7 +87,13 @@ function styles() {
     float:right;
   `)
   sheet.add('#downloads', `font-size:2em; padding:1em 0em;`)
-  sheet.add('#downloads a', `clear:both; width:100%; display:block; margin:1em;`)
+  sheet.add('#downloads a', `
+    cursor:pointer;
+    clear:both;
+    width:100%;
+    display:block;
+    margin:1em;
+  `)
 
   sheet.render()
   return sheet.id

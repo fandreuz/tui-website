@@ -9,7 +9,15 @@ const showToggle = require('components/controls/display/showToggle')
 const styles = require('./styles')
 
 function builder(state, emit) {
+  // if the themes aren't loaded fetch them
+  if (state.themesLoaded !== true) {
+    emit('getThemes')
+    emit('render')
+  }
+  // Set Default theme for basis of theme creation
+
   const defaults = state.buildingTheme
+  console.log(defaults)
   if (defaults !== null) {
     return html`
       <div className=${styles()}>
@@ -21,7 +29,6 @@ function builder(state, emit) {
         ${showToggle('storage', 'storage_color', state, emit)}
         ${showToggle('device', 'device_color', state, emit)}
         ${overlay(state, emit)}
-
       </div>
       <div id="customTheme" className="half">
             ${preview(defaults, state, emit)}

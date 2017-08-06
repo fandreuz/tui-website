@@ -38,6 +38,7 @@ function styles(sheet, sv) {
   sheet.add('.theme_preview span', `
           clear:both;
           display:block;
+          line-height:1.3em;
       `)
   sheet.add('.theme_preview .input_area', `
            display:block;
