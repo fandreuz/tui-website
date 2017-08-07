@@ -1,4 +1,4 @@
-const { requester, normalizer } = require('store/network')
+const { requester, normalizer, writeTheme } = require('store/network')
 
 function getThemes(state, emitter) {
   const storeThemes = (respond) => {
@@ -13,6 +13,7 @@ function getThemes(state, emitter) {
       }
     })
     setTimeout(() => {
+      writeTheme('default', state.themes)
       emitter.emit('render')
     }, 3000)
 
