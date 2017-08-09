@@ -38,9 +38,14 @@ function builder(state, emit) {
             ${previewControls(defaults, state, emit)}
           </div>
           <div id="downloads">
-            ${saveButton('theme', 'buildingTheme', state, emit)}
-            ${saveButton('suggestions', 'buildingSuggestion', state, emit)}
+          <div className="desktop-only">
+            ${saveButton('theme', 'buildingTheme', '[Download theme.xml]', state, emit)}
+            ${saveButton('suggestions', 'buildingSuggestion', '[Download suggestions.xml]', state, emit)}
           </div>
+            <div className="mobile-only">
+            ${saveButton('urlPointer', 'BOTH', '[Paste into TUI]', 'Copied to clipboard', state, emit)}
+          </div>
+            </div>
       </div>
     `
   }

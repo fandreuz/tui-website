@@ -15,6 +15,9 @@ function styles(sheet, sv) {
     padding:0;
     margin:0;
   `)
+  sheet.add('.mobile-only', `
+          display:none;
+        `)
   sheet.add('body', `
     margin:0px;
     padding:0px;

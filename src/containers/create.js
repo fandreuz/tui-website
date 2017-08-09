@@ -19,7 +19,14 @@ function createView(state, emit) {
           font-style: normal;
 
         }
+
         @media only screen and (max-width: 500px) {
+          .mobile-only {
+            display:block;
+          }
+          .desktop-only {
+            display:none;
+          }
           .two-thirds.third { width:100%; }
           .half {
             width:100%;
