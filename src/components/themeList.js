@@ -17,7 +17,7 @@ function themeList(state, emit) {
     return themeListItem([name, state.themes[name]], state, emit)
   })
 
-  // Set Default theme for basis of theme creation
+  // Set Default theme for base  of theme creation
   if (typeof state.themes.Default !== 'undefined') {
     const defaults = {
       'theme': state.themes.Default.files['THEME'],
