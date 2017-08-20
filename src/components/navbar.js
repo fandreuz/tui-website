@@ -4,8 +4,10 @@ const Fairybread = require('fairybread')
 function navbar(state, emit) {
   const rawList = {
     'Google+': 'https://plus.google.com/communities/103936578623101446195',
+    'Twitter': 'https://twitter.com/tui_launcher',
     'Themes': '/',
-    'Create a Theme': '/create'
+    'New Theme': '/create'
+
   }
   const renderedList = Object.keys(rawList).map((link) => {
     return html`<li><a href="${rawList[link]}">[${link}]</a></li>`

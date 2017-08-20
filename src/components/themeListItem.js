@@ -38,7 +38,6 @@ function actions(files) {
               <a download="suggestions.xml;" target="_blank" href="${files.xml.suggestions}">[Suggestions]</a>
             </div>
             <div className="mobile-only">
-            For Command:
               <a onclick=${copyUrl}>
               [Copy Url]
             </a>

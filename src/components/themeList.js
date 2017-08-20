@@ -29,7 +29,7 @@ function themeList(state, emit) {
   // Return the List
   return html`
      <div class="theme_list ${styles()}">
-     <div className="theme_item "><a className="fake" href="/create" ><h1>+ <br>Create a theme</h1></a></div>
+     <div className="theme_item "><a className="fake" href="/create" ><h1>+ <br>New theme</h1></a></div>
       ${list}
      </div>
   `
