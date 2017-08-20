@@ -21,6 +21,7 @@ function mainView(state, emit) {
           font-style: normal;
 
         }
+
        @media only screen and (max-width: 500px) {
           .theme_list {
             overflow:hidden;
@@ -31,6 +32,12 @@ function mainView(state, emit) {
             float:none !important;
             min-width:80% !important;
             width:auto !important;
+          }
+          .mobile-only {
+            display:block;
+          }
+          .desktop-only {
+            display:none;
           }
         }
         html {

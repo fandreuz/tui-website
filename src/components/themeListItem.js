@@ -1,6 +1,6 @@
 const html = require('choo/html')
 const preview = require('components/preview/preview')
-const isMobile = false // create a check function
+const copy = require('copy-to-clipboard')
 
 function themeListItem(self, state, emit) {
   const files = {
@@ -15,24 +15,36 @@ function themeListItem(self, state, emit) {
       <div class="theme_item">
         ${preview(files, state, emit)}
         <h1>${self[0]}</h1>
-        ${actions(isMobile, files)}
+        ${actions(files)}
       </div>
     `
 }
-function actions(isMobile, files) {
-  if (!isMobile) {
-    return html` <div className="actions">
-            Download:
-            <a download="theme.xml" target="_blank" href="${files.xml.theme}">[Theme]</a>
-            <a download="suggestions.xml;" target="_blank" href="${files.xml.suggestions}">[Suggestions]</a>
-          </div>`
-  } else {
-    return html` <div className="actions">
-      Open in Tui:
-      <a download="theme.xml" target="_blank" href="${files.xml.theme}">[Theme]</a>
-      <a download="suggestions.xml;" target="_blank" href="${files.xml.suggestions}">[Suggestions]</a>
-      </div>`
+
+
+
+function actions(files) {
+  const copyString = files.xml.theme.replace('theme.xml', '')
+
+  function copyUrl() {
+    copy(copyString, {
+      message: 'Url Copied'
+    })
+    alert('Url Copied')
   }
+  return html` <div className="actions">
+            <div class="desktop-only">
+            Download:
+              <a download="theme.xml" target="_blank" href="${files.xml.theme}">[Theme]</a>
+              <a download="suggestions.xml;" target="_blank" href="${files.xml.suggestions}">[Suggestions]</a>
+            </div>
+            <div className="mobile-only">
+            For Command:
+              <a onclick=${copyUrl}>
+              [Copy Url]
+            </a>
+            </div>
+          </div>`
+
 }
 
 module.exports = themeListItem

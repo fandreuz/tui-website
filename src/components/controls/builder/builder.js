@@ -43,7 +43,7 @@ function builder(state, emit) {
             ${saveButton('suggestions', 'buildingSuggestion', '[Download suggestions.xml]', null, state, emit)}
           </div>
             <div className="mobile-only">
-            ${saveButton('urlPointer', 'BOTH', '[Paste into TUI]', 'Copied to clipboard', state, emit)}
+            ${saveButton('urlPointer', 'BOTH', '[Copy code]', 'Copied to clipboard', state, emit)}
           </div>
             </div>
       </div>
