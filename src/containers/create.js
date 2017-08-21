@@ -1,7 +1,9 @@
 const html = require('choo/html')
 const header = require('components/header')
 const builder = require('components/controls/builder/builder')
+
 function createView(state, emit) {
+  emit('updateUser')
   return html`
     <body>
          <link href="https://fonts.googleapis.com/icon?family=Material+Icons"

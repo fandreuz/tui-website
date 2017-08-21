@@ -3,14 +3,13 @@ const preview = require('components/preview/preview')
 const isMobile = false // create a check function
 
 function themeListItem(self, state, emit) {
-  console.log( "single", state)
-  console.log("self", self)
+  console.log('self', self[1]['files'])
   const files = {
-    'theme': self[1]['THEME'], // json vales
-    'suggestions': self[1]['SUGGESTIONS'], // json vales
+    'theme': self[1]['files']['THEME'], // json vales
+    'suggestions': self[1]['files']['SUGGESTIONS'], // json vales
     'xml': {
-      'theme': self[1].theme,
-      'suggestions': self[1].suggestions
+      'theme': null,
+      'suggestions': null
     }
   }
   return html`

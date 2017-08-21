@@ -7,12 +7,6 @@ function themeList(state, emit) {
   if (state.themesLoaded === false) { emit('getThemes') }
   // Create a list from the theme files fetched
   const list = Object.keys(state.themes).map((name) => {
-    if (state.themes[name].themeLoaded !== true) {
-      emit('getSingle', {
-        name: name,
-        xmls: state.themes[name]
-      })
-    }
     // return a theme preview element
     return themeListItem([name, state.themes[name]], state, emit)
   })
@@ -29,7 +23,7 @@ function themeList(state, emit) {
   // Return the List
   return html`
      <div class="theme_list ${styles()}">
-     <div className="theme_item "><a className="fake" href="/create" ><h1>+ <br>Create a theme</h1></a></div>
+     <div className="theme_item "><a className="fake" href="/create" ><h1>+ <br>New theme</h1></a></div>
       ${list}
      </div>
   `

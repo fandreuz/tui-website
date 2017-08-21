@@ -1,7 +1,7 @@
 const html = require('choo/html')
 const saveToBlob = require('utils/saveBlob')
 const saveToURL = require('utils/saveUrl')
-const { addNewTheme } = require('store/firebase')
+const { publishTheme } = require('store/firebase')
 function saveButton(name, locale, state, emit) {
   const data = state.buildingTheme[name]
   saveToURL(data)
@@ -11,9 +11,7 @@ function saveButton(name, locale, state, emit) {
      </a>
   `
   function saveFile() {
-    // saveToBlob(name, state.fileExports[name])
-    addNewTheme('test-theme', state.buildingTheme)
-    // saveToURL(state.fileExports[name])
+    publishTheme(`custom_theme_${state.currentUser.uid}`, 'stagfoo', state.buildingTheme)
   }
 }
 

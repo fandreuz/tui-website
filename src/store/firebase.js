@@ -14,35 +14,61 @@ function updateAllThemes(theme) {
   firebase.database().ref('themes/').set(theme)
 }
 
-function addNewTheme(name, data) {
+function publishTheme(name, author, data) {
   // A post entry.
   debugger
   const postData = {
     name: name,
-    uid: name,
-    theme: data.theme,
-    suggestions: data.suggestions
+    author: author,
+    authorAuth: null,
+    published: false,
+    likes: 0,
+    files: {
+      THEME: data.theme,
+      SUGGESTIONS: data.suggestions
+    }
   }
 
   // Get a key for a new Post.
   // var newPostKey = firebase.database().ref().child('posts').push().key;
   // Write the new post's data simultaneously in the posts list and the user's post list.
-  var updates = {}
+  let updates = {}
   updates['/themes/' + name] = postData
   return firebase.database().ref().update(updates)
 }
 
-function fetchTheme(callback) {
+function fetchThemes(callback) {
   console.log('Firebase Themes')
   firebase.database().ref('/themes/').once('value').then(function (snapshot) {
     callback(snapshot.val())
   })
 }
 
+function anonSignup() {
+  firebase.auth().signInAnonymously().catch(function (error) {
+    // Handle Errors here.
+    const errorCode = error.code
+    const errorMessage = error.message
+    if (error) { console.error(errorCode, errorMessage) }
+  })
+
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+      const isAnonymous = user.isAnonymous
+      const uid = user.uid
+      console.log(uid)
+    } else {
+      // User is signed out.
+    }
+  })
+}
+
 const tools = {
-  fetchTheme,
+  fetchThemes,
   updateAllThemes,
-  addNewTheme,
-  firebase
+  publishTheme,
+  firebase,
+  anonSignup
 }
 module.exports = tools
