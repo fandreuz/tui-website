@@ -41,17 +41,5 @@ function normalizer(rawJson) {
   })
   return result
 }
-var config = {
-  apiKey: 'AIzaSyArNX7NXNVhvs5Ead4w2q9sndbFF0EQbo0',
-  authDomain: 'voltaic-charter-154600.firebaseapp.com',
-  databaseURL: 'https://voltaic-charter-154600.firebaseio.com',
-  projectId: 'voltaic-charter-154600',
-  storageBucket: 'voltaic-charter-154600.appspot.com',
-  messagingSenderId: '461882303040'
-}
-firebase.initializeApp(config)
-var database = firebase.database()
-function writeTheme(name, theme) {
-  firebase.database().ref('themes/').set(theme)
-}
-module.exports = { requester, normalizer, writeTheme }
+
+module.exports = { requester, normalizer }

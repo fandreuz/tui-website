@@ -1,28 +1,13 @@
 const { requester, normalizer, writeTheme } = require('store/network')
+const { addNewTheme, fetchTheme } = require('store/firebase')
 
 function getThemes(state, emitter) {
-  const storeThemes = (respond) => {
-    state.themes = JSON.parse(respond.currentTarget.response)
+  console.log('fetch')
+  fetchTheme((data) => {
+    state.themes = data
     state.themesLoaded = true
-    Object.keys(state.themes).map((name) => {
-      if (state.themes[name].themeLoaded !== true) {
-        emitter.emit('getSingle', {
-          name: name,
-          xmls: state.themes[name]
-        })
-      }
-    })
-    setTimeout(() => {
-      writeTheme('default', state.themes)
-      emitter.emit('render')
-    }, 3000)
-
-  }
-  const call = {
-    'method': 'GET',
-    'url': 'https://raw.githubusercontent.com/stagfoo/tui-themes/master/endpoint.json'
-  }
-  requester(call, storeThemes, emitter)
+    emitter.emit('render')
+  })
 }
 
 function getSingle(data, state, emitter) {

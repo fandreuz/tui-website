@@ -11,7 +11,6 @@ function themeXML(data) {
       cleanColor = data[key]
     } else {
       const hexAlpha = data[key].split(',')[3].replace(')', '')
-      console.log('hexAlpha', key, hexAlpha)
       cleanColor = RGBA2HEX(data[key], hexAlpha)
     }
     return `<${key} value="${cleanColor}"/>`
