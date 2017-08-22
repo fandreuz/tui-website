@@ -13,6 +13,7 @@ function store(state, emitter) {
   state.themePage = 0
   state.themesLoaded = false
   state.buildingTheme = null
+  state.buildingThemeName = ''
   state.themeViewSettings = {
     'battery': true,
     'storage': true,
