@@ -2,6 +2,7 @@ const inputBinder = require('components/controls/inputBinder')
 function filterFields(key, state, emit, data, filename) {
   let type
   if (key.indexOf('color') > -1 || key.indexOf('bg') > -1) {
+    // check if the value is a color or boolean instead
     type = 'swatch'
   }
   if (key.indexOf('enabled') > -1) {

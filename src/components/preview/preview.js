@@ -1,11 +1,10 @@
 const html = require('choo/html')
 const styles = require('components/preview/styles')
 function suggestion(name) {
-  return html`<div class="box default_text_color default_bg_color ${name}_bg_color ${name}_text_color">${name}</div>`
+  return html`<div class="box ${name}_bg_color ${name}_text_color">${name}</div>`
 }
 
 function themePreview({theme, suggestions}, state, emit) {
-  console.log(state)
   const stylesRender = styles(theme, suggestions, state.themeViewSettings)
   return html`
         <div class="${stylesRender} theme_preview">

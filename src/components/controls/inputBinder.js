@@ -1,6 +1,5 @@
 const swatch = require('components/controls/common/swatch')
 const overlay = require('components/controls/theme/overlay')
-
 const checkbox = require('components/controls/common/checkbox')
 const transparent = require('components/controls/suggestions/transparent')
 

@@ -17,7 +17,6 @@ function builder(state, emit) {
   // Set Default theme for basis of theme creation
 
   const defaults = state.buildingTheme
-  console.log(defaults)
   if (defaults !== null) {
     return html`
       <div className=${styles()}>

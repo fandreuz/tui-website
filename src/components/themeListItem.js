@@ -3,12 +3,13 @@ const preview = require('components/preview/preview')
 const copy = require('copy-to-clipboard')
 
 function themeListItem(self, state, emit) {
+  console.log('self', self[1]['files'])
   const files = {
-    'theme': self[1].files['THEME'], // json vales
-    'suggestions': self[1].files['SUGGESTIONS'], // json vales
+    'theme': self[1]['files']['THEME'], // json vales
+    'suggestions': self[1]['files']['SUGGESTIONS'], // json vales
     'xml': {
-      'theme': self[1].theme,
-      'suggestions': self[1].suggestions
+      'theme': null,
+      'suggestions': null
     }
   }
   return html`
