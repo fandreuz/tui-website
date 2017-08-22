@@ -18,7 +18,8 @@
   "globals": {
     "chrome": true,
     "localStorage": true,
-    "Blob":true
+    "Blob":true,
+    "alert": true
   }
 }
 

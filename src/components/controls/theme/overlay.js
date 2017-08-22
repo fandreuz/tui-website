@@ -1,5 +1,5 @@
 const html = require('choo/html')
-const { RGBA2HEX, HEX2RGBA, convertAlpha } = require('utils/colors')
+const { RGBA2HEX, HEX2RGBA } = require('utils/colors')
 function overlay(label, name, currentValue, file, setValue) {
   // Get the opacity for later
   const opacity = parseFloat(currentValue.replace(')', '').split(',')[3])

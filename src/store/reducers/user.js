@@ -5,11 +5,12 @@ function updateUser(state) {
   if (currentUser === null) {
     anonSignup()
     currentUser = firebase.auth().currentUser
-  }
-  console.log(state)
-  state.currentUser = {
-    isAnonymous: currentUser.isAnonymous,
-    uid: currentUser.uid
+  } else {
+    state.currentUser = {
+      isAnonymous: currentUser.isAnonymous,
+      uid: currentUser.uid
+    }
+    state.buildingThemeName = `custom_theme_${state.currentUser.uid}`
   }
 }
 

@@ -23,7 +23,6 @@ function updateThemeValue(data, state, emitter) {
   state.fileExports['theme'] = themeXML(state.buildingTheme.theme)
   state.fileExports['suggestions'] = suggestionXML(state.buildingTheme.suggestions)
   publishTheme(`custom_theme_${state.currentUser.uid}`, state.currentUser.uid, state.buildingTheme)
-  state.buildingThemeName = `custom_theme_${state.currentUser.uid}`
   emitter.emit('render')
 }
 

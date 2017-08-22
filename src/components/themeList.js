@@ -4,12 +4,18 @@ const Fairybread = require('fairybread')
 
 function themeList(state, emit) {
   // if the themes aren't loaded fetch them
-  if (state.themesLoaded === false) { emit('getThemes') }
-  // Create a list from the theme files fetched
-  const list = Object.keys(state.themes).map((name) => {
-    // return a theme preview element
-    return themeListItem([name, state.themes[name]], state, emit)
-  })
+  let list = html`<h3>Loading theme list...</h3>`
+  if (state.themesLoaded === false) {
+    emit('getThemes')
+  } else {
+    // Create a list from the theme files fetched
+    list = Object.keys(state.themes).map((name) => {
+      // return a theme preview element
+      if (state.themes[name].published === true) {
+        return themeListItem([name, state.themes[name]], state, emit)
+      }
+    })
+  }
 
   // Set Default theme for base  of theme creation
   if (typeof state.themes.Default !== 'undefined') {
@@ -21,9 +27,10 @@ function themeList(state, emit) {
   }
 
   // Return the List
+  //  <div className="theme_item "><a className="fake" href="/create" ><h1>+ <br>New theme</h1></a></div>
+  //
   return html`
      <div class="theme_list ${styles()}">
-     <div className="theme_item "><a className="fake" href="/create" ><h1>+ <br>New theme</h1></a></div>
       ${list}
      </div>
   `
@@ -57,6 +64,12 @@ function themeList(state, emit) {
     `)
     sheet.add('.theme_item .actions', `
           color:white;
+    `)
+    sheet.add('.themeString', `
+        color:white;
+        border:1px solid;
+        padding:0.5em;
+        overflow:scroll
     `)
 
     sheet.render()

@@ -9,6 +9,7 @@ const showToggle = require('components/controls/display/showToggle')
 const styles = require('./styles')
 
 function builder(state, emit) {
+
   // if the themes aren't loaded fetch them
   if (state.themesLoaded !== true) {
     emit('getThemes')
@@ -17,6 +18,8 @@ function builder(state, emit) {
   // Set Default theme for basis of theme creation
 
   const defaults = state.buildingTheme
+  const copyString = `theme -apply ${state.buildingThemeName}`
+
   if (defaults !== null) {
     return html`
       <div className=${styles()}>
@@ -38,11 +41,12 @@ function builder(state, emit) {
           </div>
           <div id="downloads">
           <div className="desktop-only">
-            ${saveButton('theme', 'buildingTheme', '[Download theme.xml]', null, state, emit)}
-            ${saveButton('suggestions', 'buildingSuggestion', '[Download suggestions.xml]', null, state, emit)}
+            <div className="themeString">
+              <code><pre>$ ${copyString}</pre></code>
+            </div>
           </div>
             <div className="mobile-only">
-            ${saveButton('urlPointer', 'BOTH', '[Copy code]', 'Copied to clipboard', state, emit)}
+            ${saveButton(copyString, state, emit)}
           </div>
             </div>
       </div>

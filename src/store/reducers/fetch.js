@@ -1,8 +1,6 @@
-const { requester, normalizer, writeTheme } = require('store/network')
 const { fetchThemes } = require('store/firebase')
 
 function getThemes(state, emitter) {
-  console.log('fetch')
   fetchThemes((data) => {
     state.themes = data
     Object.keys(data).map((theme) => {
@@ -14,7 +12,7 @@ function getThemes(state, emitter) {
 }
 
 function getSingle(data, state, emitter) {
-  //get single file,
+  // get single file,
   // create customTheme from default
 }
 

@@ -3,45 +3,40 @@ const preview = require('components/preview/preview')
 const copy = require('copy-to-clipboard')
 
 function themeListItem(self, state, emit) {
-  console.log('self', self[1]['files'])
+  const themeName = self[0]
+  const themeObject = self[1]
   const files = {
-    'theme': self[1]['files']['THEME'], // json vales
-    'suggestions': self[1]['files']['SUGGESTIONS'], // json vales
-    'xml': {
-      'theme': null,
-      'suggestions': null
-    }
+    'theme': themeObject['files']['THEME'],
+    'suggestions': themeObject['files']['SUGGESTIONS']
   }
   return html`
       <div class="theme_item">
         ${preview(files, state, emit)}
-        <h1>${self[0]}</h1>
-        ${actions(files)}
+        <h1>${themeName}</h1>
+        ${actions(files, themeName)}
       </div>
     `
 }
 
-
-
-function actions(files) {
-  const copyString = files.xml.theme.replace('theme.xml', '')
+function actions(files, name) {
+  const copyString = `theme -apply ${name}`
 
   function copyUrl() {
     copy(copyString, {
-      message: 'Url Copied'
+      message: 'Command Copied'
     })
-    alert('Url Copied')
+    alert('Command Copied')
   }
   return html` <div className="actions">
             <div class="desktop-only">
-            Download:
-              <a download="theme.xml" target="_blank" href="${files.xml.theme}">[Theme]</a>
-              <a download="suggestions.xml;" target="_blank" href="${files.xml.suggestions}">[Suggestions]</a>
+             <div className="themeString">
+              <code><pre>$ ${copyString}</pre></code>
+             </div>
             </div>
             <div className="mobile-only">
-              <a onclick=${copyUrl}>
-              [Copy Url]
-            </a>
+            <div onclick=${copyUrl} className="themeString">
+              <code><pre>${copyString}</pre></code>
+            </div>
             </div>
           </div>`
 

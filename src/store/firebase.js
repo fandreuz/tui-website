@@ -16,7 +16,6 @@ function updateAllThemes(theme) {
 
 function publishTheme(name, author, data) {
   // A post entry.
-  debugger
   const postData = {
     name: name,
     author: author,
@@ -38,7 +37,6 @@ function publishTheme(name, author, data) {
 }
 
 function fetchThemes(callback) {
-  console.log('Firebase Themes')
   firebase.database().ref('/themes/').once('value').then(function (snapshot) {
     callback(snapshot.val())
   })
@@ -54,11 +52,11 @@ function anonSignup() {
 
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-      // User is signed in.
+      console.log('User is signed in.')
       const isAnonymous = user.isAnonymous
       const uid = user.uid
-      console.log(uid)
     } else {
+      console.log('User is signed out.')
       // User is signed out.
     }
   })

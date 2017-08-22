@@ -3,10 +3,10 @@ const Fairybread = require('fairybread')
 
 function navbar(state, emit) {
   const rawList = {
-    'Google+': 'https://plus.google.com/communities/103936578623101446195',
-    'Twitter': 'https://twitter.com/tui_launcher',
+    'New Theme': '/create',
     'Themes': '/',
-    'New Theme': '/create'
+    'Google+': 'https://plus.google.com/communities/103936578623101446195',
+    'Twitter': 'https://twitter.com/tui_launcher'
 
   }
   const renderedList = Object.keys(rawList).map((link) => {
@@ -26,13 +26,21 @@ function styles() {
         text-align:center;
         padding-bottom:4em;
       `)
-  sheet.add('li', `
-        display:inline-block;
-        padding:0 1em;
-      `)
+
   sheet.add('a:hover', `
         color:white;
       `)
+  if (window.innerWidth > 500) {
+    sheet.add('li', `
+    display:inline-block;
+    padding:0 1em;
+   `)
+  } else {
+    sheet.add('li', `
+    display:inline-block;
+    padding:1em 1em;
+   `)
+  }
   sheet.render()
   return sheet.id
 }

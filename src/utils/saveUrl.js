@@ -21,7 +21,6 @@ function createUrl(data) {
 }
 
 function saveToURL(data) {
-  console.log(data['suggestions'])
   const themeString = 'theme/' + createUrl(data['theme'])
   const suggestionString = 'suggestions/' + createUrl(data['suggestions'])
 
