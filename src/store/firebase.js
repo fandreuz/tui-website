@@ -35,9 +35,17 @@ function publishTheme(name, author, data) {
   updates['/themes/' + name] = postData
   return firebase.database().ref().update(updates)
 }
+function removeTheme(name){
+  firebase.database().ref(`/themes/${name}`).remove()
+}
 
 function fetchThemes(callback) {
   firebase.database().ref('/themes/').once('value').then(function (snapshot) {
+    callback(snapshot.val())
+  })
+}
+function fetchSingleThemes(name, callback) {
+  firebase.database().ref(`/themes/${}`).once('value').then(function (snapshot) {
     callback(snapshot.val())
   })
 }
@@ -67,6 +75,8 @@ const tools = {
   updateAllThemes,
   publishTheme,
   firebase,
-  anonSignup
+  anonSignup,
+  removeTheme,
+  fetchSingleThemes
 }
 module.exports = tools

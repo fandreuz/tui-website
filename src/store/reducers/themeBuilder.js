@@ -31,10 +31,16 @@ function updateThemeViewSettings(data, state, emitter) {
   // normalizer
   emitter.emit('render')
 }
+function publishTheme(data, state, emitter){
+
+  publishTheme(data, state.currentUser.uid, state.buildingTheme)
+  removeTheme(`custom_theme_${state.currentUser.uid}`)
+}
 
 const themeBuilder = {
   setDefault,
   updateThemeValue,
-  updateThemeViewSettings
+  updateThemeViewSettings,
+  publishTheme
 }
 module.exports = themeBuilder
