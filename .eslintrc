@@ -19,7 +19,8 @@
     "chrome": true,
     "localStorage": true,
     "Blob":true,
-    "alert": true
+    "alert": true,
+    "prompt": true
   }
 }
 
