@@ -10,14 +10,18 @@ const config = {
 }
 firebase.initializeApp(config)
 
-function updateAllThemes(theme) {
-  firebase.database().ref('themes/').set(theme)
+function replaceAll(target, search, replacement) {
+  return target.split(search).join(replacement)
 }
 
-function publishTheme(name, author, data) {
+function updateAllThemes(themes) {
+  firebase.database().ref('themes/').set(themes)
+}
+
+function updateTheme(name, author, data) {
   // A post entry.
   const postData = {
-    name: name,
+    name: replaceAll(name, ' ', '-'),
     author: author,
     authorAuth: null,
     published: false,
@@ -31,6 +35,23 @@ function publishTheme(name, author, data) {
   // Get a key for a new Post.
   // var newPostKey = firebase.database().ref().child('posts').push().key;
   // Write the new post's data simultaneously in the posts list and the user's post list.
+  let updates = {}
+  updates['/themes/' + name] = postData
+  return firebase.database().ref().update(updates)
+}
+function publishTheme(name, author, data) {
+  // A post entry.
+  const postData = {
+    name: replaceAll(name, ' ', '-'),
+    author: author,
+    authorAuth: author,
+    published: true,
+    likes: 1,
+    files: {
+      THEME: data.theme,
+      SUGGESTIONS: data.suggestions
+    }
+  }
   let updates = {}
   updates['/themes/' + name] = postData
   return firebase.database().ref().update(updates)
@@ -77,6 +98,7 @@ const tools = {
   firebase,
   anonSignup,
   removeTheme,
-  fetchSingleThemes
+  fetchSingleThemes,
+  updateTheme
 }
 module.exports = tools

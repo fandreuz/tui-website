@@ -1,6 +1,6 @@
 const { getThemes, getSingle } = require('store/reducers/fetch')
 const updateUser = require('store/reducers/user')
-const { setDefault, updateThemeValue, updateThemeViewSettings, publishTheme } = require('store/reducers/themeBuilder')
+const { setDefault, updateThemeValue, updateThemeViewSettings, updatePublishTheme } = require('store/reducers/themeBuilder')
 
 const reducers = {
   getThemes,
@@ -9,7 +9,7 @@ const reducers = {
   updateUser,
   updateThemeValue,
   updateThemeViewSettings,
-  publishTheme
+  updatePublishTheme
 }
 
 module.exports = reducers

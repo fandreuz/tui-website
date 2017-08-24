@@ -8,10 +8,10 @@ function saveButton(copyString, state, emit) {
      </a>
   `
   function saveFile() {
-      copy(copyString, {
-        message: 'Command Copied'
-      })
-      alert('Command Copied')
+    copy(copyString, {
+      message: 'Command Copied'
+    })
+    alert('Command Copied')
   }
 }
 

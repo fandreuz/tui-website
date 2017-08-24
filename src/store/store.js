@@ -1,7 +1,7 @@
-const { getThemes, updateUser, getSingle, publishTheme, setDefault, updateThemeValue, updateThemeViewSettings } = require('store/reducers')
+const { getThemes, updateUser, getSingle, updatePublishTheme, setDefault, updateThemeValue, updateThemeViewSettings } = require('store/reducers')
 function store(state, emitter) {
   emitter.on('getThemes', () => getThemes(state, emitter))
-  emitter.on('publishTheme', (data) => publishTheme(data, state, emitter))
+  emitter.on('publishTheme', (data) => updatePublishTheme(data, state, emitter))
   emitter.on('getSingle', (data) => getSingle(data, state, emitter))
   emitter.on('setDefault', (data) => setDefault(data, state, emitter))
   emitter.on('updateUser', () => updateUser(state, emitter))
@@ -14,6 +14,7 @@ function store(state, emitter) {
   state.themesLoaded = false
   state.buildingTheme = null
   state.buildingThemeName = ''
+  state.publishStatus = null
   state.themeViewSettings = {
     'battery': true,
     'storage': true,
@@ -22,6 +23,6 @@ function store(state, emitter) {
     'device': true,
     'overlay': false
   }
-  state.fileExports = {'theme': '', 'suggestions': ''}
+  state.fileExports = { 'theme': '', 'suggestions': '' }
 }
 module.exports = store
