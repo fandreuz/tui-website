@@ -1,5 +1,5 @@
 const { themeXML, suggestionXML } = require('utils/fileNormalizer')
-const { publishTheme } = require('store/firebase')
+const { publishTheme, removeTheme } = require('store/firebase')
 
 function setDefault(data, state, emitter) {
   if (state.buildingTheme === null) {
@@ -31,7 +31,8 @@ function updateThemeViewSettings(data, state, emitter) {
   // normalizer
   emitter.emit('render')
 }
-function publishTheme(data, state, emitter){
+
+function updatePublishTheme(data, state, emitter) {
 
   publishTheme(data, state.currentUser.uid, state.buildingTheme)
   removeTheme(`custom_theme_${state.currentUser.uid}`)
@@ -41,6 +42,7 @@ const themeBuilder = {
   setDefault,
   updateThemeValue,
   updateThemeViewSettings,
-  publishTheme
+  publishTheme,
+  updatePublishTheme
 }
 module.exports = themeBuilder

@@ -2,6 +2,7 @@ const html = require('choo/html')
 const previewControls = require('components/controls/previewControls')
 const preview = require('components/preview/preview')
 const saveButton = require('components/controls/common/saveButton')
+const publishButton = require('components/controls/common/publishBtn')
 const battery = require('components/controls/display/battery')
 const overlay = require('components/controls/display/overlay')
 
@@ -40,9 +41,10 @@ function builder(state, emit) {
             ${previewControls(defaults, state, emit)}
           </div>
           <div id="downloads">
+          ${publishButton(state, emit)}
           <div className="desktop-only">
             <div className="themeString">
-              <code><pre>$ ${copyString}</pre></code>
+            <code><pre>$ ${copyString}</pre></code>
             </div>
           </div>
             <div className="mobile-only">

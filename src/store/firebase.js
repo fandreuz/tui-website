@@ -35,7 +35,7 @@ function publishTheme(name, author, data) {
   updates['/themes/' + name] = postData
   return firebase.database().ref().update(updates)
 }
-function removeTheme(name){
+function removeTheme(name) {
   firebase.database().ref(`/themes/${name}`).remove()
 }
 
@@ -45,7 +45,7 @@ function fetchThemes(callback) {
   })
 }
 function fetchSingleThemes(name, callback) {
-  firebase.database().ref(`/themes/${}`).once('value').then(function (snapshot) {
+  firebase.database().ref(`/themes/${name}`).once('value').then(function (snapshot) {
     callback(snapshot.val())
   })
 }

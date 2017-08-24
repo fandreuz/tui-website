@@ -20,4 +20,4 @@ function publishButton(state, emit) {
   }
 }
 
-module.exports = saveButton
+module.exports = publishButton
