@@ -50,7 +50,13 @@ function updatePublishTheme(data, state, emitter) {
       emitter.emit('render')
     }
   }
-  fetchSingleThemes(data, callback)
+  if (data !== null && data !== '' && typeof data !== 'undefined') {
+    fetchSingleThemes(data, callback)
+  } else {
+    state.publishStatus = false
+    emitter.emit('render')
+  }
+
 }
 
 const themeBuilder = {

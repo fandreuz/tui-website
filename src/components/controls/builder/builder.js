@@ -16,11 +16,18 @@ function builder(state, emit) {
     emit('getThemes')
     emit('render')
   }
+  if (typeof state.themes.Default !== 'undefined') {
+    const defaults = {
+      'theme': state.themes.Default.files['THEME'],
+      'suggestions': state.themes.Default.files['SUGGESTIONS']
+    }
+    emit('setDefault', defaults)
+  }
   // Set Default theme for basis of theme creation
 
   const defaults = state.buildingTheme
   const copyString = `theme -apply ${state.buildingThemeName}`
-
+  console.log(state)
   if (defaults !== null) {
     return html`
       <div className=${styles()}>

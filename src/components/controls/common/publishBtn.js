@@ -23,10 +23,9 @@ function publishButton(state, emit) {
   `
   function publish() {
 
-
-
     emit('render')
     const name = prompt(`what's the name of your theme?`)
+    // const author = prompt(`what's the the authors name (you)?`)
     emit('publishTheme', replaceAll(name, ' ', '-'))
   }
 }
