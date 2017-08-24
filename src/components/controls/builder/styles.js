@@ -94,6 +94,12 @@ function styles() {
     display:block;
     margin:1em;
   `)
+  sheet.add('.themeString', `
+    display:block;
+    margin: 0 auto;
+    border: 1px solid;
+    max-width:700px;
+  `)
 
   sheet.render()
   return sheet.id
