@@ -6,6 +6,8 @@ function publishButton(state, emit) {
   }
   const error = html`<p class="error">The name is already taken</p>`
   const success = html`<p class="success">Your theme is published</p>`
+  let themeName;
+  let themeAuthor;
   let message = null
   if (state.publishStatus) {
     message = success
@@ -15,6 +17,21 @@ function publishButton(state, emit) {
   }
   return html`
   <div>
+    <ul className="publishForm" >
+    <li>
+      <small>Theme's Name</small>
+      <input onkeyup=${(e) =>{
+        themeName = e.target.value
+      } } type="text" >
+    </li>
+    <li>
+    <small>Author's Name</small>
+    <input onkeyup=${(e) =>{
+      themeAuthor = e.target.value
+    }} type="text" >
+  </li>
+
+    </ul>
      <a onclick=${publish}>
       [Publish Theme]
      </a>
@@ -22,11 +39,11 @@ function publishButton(state, emit) {
     </div>
   `
   function publish() {
-
     emit('render')
-    const name = prompt(`what's the name of your theme?`)
-    // const author = prompt(`what's the the authors name (you)?`)
-    emit('publishTheme', replaceAll(name, ' ', '-'))
+    emit('publishTheme', {
+      'name': replaceAll(themeName, ' ', '-'),
+      'author': themeAuthor
+    })
   }
 }
 
