@@ -39,21 +39,21 @@ function updateTheme(name, author, data) {
   updates['/themes/' + name] = postData
   return firebase.database().ref().update(updates)
 }
-function publishTheme(name, author, data) {
+function publishTheme(data, uid, theme) {
   // A post entry.
   const postData = {
-    name: replaceAll(name, ' ', '-'),
-    author: author,
-    authorAuth: author,
+    name: replaceAll(data.name, ' ', '-'),
+    author: data.author,
+    authorAuth: uid,
     published: true,
     likes: 1,
     files: {
-      THEME: data.theme,
-      SUGGESTIONS: data.suggestions
+      THEME: theme.theme,
+      SUGGESTIONS: theme.suggestions
     }
   }
   let updates = {}
-  updates['/themes/' + name] = postData
+  updates['/themes/' +  data.name] = postData
   return firebase.database().ref().update(updates)
 }
 function removeTheme(name) {

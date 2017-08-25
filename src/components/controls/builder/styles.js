@@ -90,7 +90,6 @@ function styles() {
   sheet.add('#downloads a', `
     cursor:pointer;
     clear:both;
-    width:100%;
     display:block;
     margin:1em;
   `)
@@ -99,6 +98,15 @@ function styles() {
     margin: 0 auto;
     border: 1px solid;
     max-width:700px;
+  `)
+  sheet.add('.publishForm', `
+    margin-bottom: 2em;
+    overflow: hidden;
+  `)
+  sheet.add('.publishForm li', `
+  margin: 0.5em;
+  float: left;
+  clear: both;
   `)
 
   sheet.render()

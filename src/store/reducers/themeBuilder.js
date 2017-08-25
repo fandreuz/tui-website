@@ -51,7 +51,7 @@ function updatePublishTheme(data, state, emitter) {
     }
   }
   if (data !== null && data !== '' && typeof data !== 'undefined') {
-    fetchSingleThemes(data, callback)
+    fetchSingleThemes(data.name, callback)
   } else {
     state.publishStatus = false
     emitter.emit('render')
