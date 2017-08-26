@@ -1,10 +1,15 @@
-function addTrainPart(image, state, emitter) {
-  state.train.push(image)
-  emitter.emit('render')
-}
+const { getThemes, getSingle } = require('store/reducers/fetch')
+const updateUser = require('store/reducers/user')
+const { setDefault, updateThemeValue, updateThemeViewSettings, updatePublishTheme } = require('store/reducers/themeBuilder')
 
 const reducers = {
-  addTrainPart
+  getThemes,
+  getSingle,
+  setDefault,
+  updateUser,
+  updateThemeValue,
+  updateThemeViewSettings,
+  updatePublishTheme
 }
 
 module.exports = reducers

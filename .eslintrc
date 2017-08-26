@@ -16,7 +16,11 @@
     "no-unused-expressions": "warn"
   },
   "globals": {
-    "chrome": true
+    "chrome": true,
+    "localStorage": true,
+    "Blob":true,
+    "alert": true,
+    "prompt": true
   }
 }
 
