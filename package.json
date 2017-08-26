@@ -1,6 +1,6 @@
 {
   "name": "tui-website",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a website for a terminal launcher on android",
   "main": "index.js",
   "scripts": {
