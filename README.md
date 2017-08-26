@@ -16,9 +16,9 @@ a place to help share themes and foster the comunity. the project is built using
 └── src
 
 ```
+## Website
+[T-UI Launcher]()
 
-## Design
-![The Design](https://github.com/stagfoo/tui-website/blob/master/docs/design.png?raw=true)
 
 # How to run
 
@@ -63,7 +63,7 @@ the theme preview takes classes created by the name based on the themes property
 ```
 the theme preview takes classes created by the name based on the themes property name.
 
-#Firebase
+# Firebase
 this project allows user to edit the database through anon users.
 once a user is on the site they are setup as a anon user for storing themes.
 - When a user edits a theme it will update there `custom_theme_{uid}` in firebase
