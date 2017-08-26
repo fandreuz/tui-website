@@ -8,6 +8,29 @@ const config = {
   storageBucket: 'voltaic-charter-154600.appspot.com',
   messagingSenderId: '461882303040'
 }
+const cleanTemplate = {
+  name: null,
+  author: null,
+  authorAuth: null,
+  published: false,
+  downloads: 0,
+  files: {
+    THEME: null,
+    SUGGESTIONS: null
+  }
+}
+let themeTemplate = {
+  name: null,
+  author: null,
+  authorAuth: null,
+  published: false,
+  downloads: 0,
+  files: {
+    THEME: null,
+    SUGGESTIONS: null
+  }
+}
+
 firebase.initializeApp(config)
 
 function replaceAll(target, search, replacement) {
@@ -18,43 +41,51 @@ function updateAllThemes(themes) {
   firebase.database().ref('themes/').set(themes)
 }
 
-function updateTheme(name, author, data) {
-  // A post entry.
-  const postData = {
-    name: replaceAll(name, ' ', '-'),
-    author: author,
-    authorAuth: null,
-    published: false,
-    likes: 0,
-    files: {
+function updateTheme(name, uid, data) {
+  anonSignup()
+  if (uid) {
+    // A post entry.
+    themeTemplate = cleanTemplate
+    themeTemplate.name = replaceAll(name, ' ', '-')
+    themeTemplate.author = null
+    themeTemplate.authorAuth = uid
+    themeTemplate.published = false
+    themeTemplate.downloads = 0
+    themeTemplate.files = {
       THEME: data.theme,
       SUGGESTIONS: data.suggestions
     }
-  }
 
-  // Get a key for a new Post.
-  // var newPostKey = firebase.database().ref().child('posts').push().key;
-  // Write the new post's data simultaneously in the posts list and the user's post list.
-  let updates = {}
-  updates['/themes/' + name] = postData
-  return firebase.database().ref().update(updates)
+    const postData = themeTemplate
+
+    // Get a key for a new Post.
+    // var newPostKey = firebase.database().ref().child('posts').push().key;
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    let updates = {}
+    updates['/themes/' + name] = postData
+    return firebase.database().ref().update(updates)
+  }
 }
 function publishTheme(data, uid, theme) {
-  // A post entry.
-  const postData = {
-    name: replaceAll(data.name, ' ', '-'),
-    author: data.author,
-    authorAuth: uid,
-    published: true,
-    likes: 1,
-    files: {
+  anonSignup()
+  if (uid) {
+    // A post entry.
+    themeTemplate = cleanTemplate
+    themeTemplate.name = replaceAll(data.name, ' ', '-')
+    themeTemplate.author = data.author
+    themeTemplate.authorAuth = uid
+    themeTemplate.published = true
+    themeTemplate.downloads = 0
+    themeTemplate.files = {
       THEME: theme.theme,
       SUGGESTIONS: theme.suggestions
     }
+
+    const postData = themeTemplate
+    let updates = {}
+    updates['/themes/' + data.name] = postData
+    return firebase.database().ref().update(updates)
   }
-  let updates = {}
-  updates['/themes/' +  data.name] = postData
-  return firebase.database().ref().update(updates)
 }
 function removeTheme(name) {
   firebase.database().ref(`/themes/${name}`).remove()
@@ -84,6 +115,8 @@ function anonSignup() {
       console.log('User is signed in.')
       const isAnonymous = user.isAnonymous
       const uid = user.uid
+      const loggedIn = { isAnonymous, uid }
+      return loggedIn
     } else {
       console.log('User is signed out.')
       // User is signed out.

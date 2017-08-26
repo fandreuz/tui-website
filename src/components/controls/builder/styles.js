@@ -102,11 +102,17 @@ function styles() {
   sheet.add('.publishForm', `
     margin-bottom: 2em;
     overflow: hidden;
+    max-width:400px;
+    margin: 0 auto;
   `)
   sheet.add('.publishForm li', `
   margin: 0.5em;
   float: left;
   clear: both;
+  `)
+  sheet.add('.publishForm li small', `
+  min-width: 160px;
+  display: inline-block;
   `)
 
   sheet.render()

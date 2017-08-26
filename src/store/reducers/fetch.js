@@ -4,7 +4,7 @@ function getThemes(state, emitter) {
   fetchThemes((data) => {
     state.themes = data
     Object.keys(data).map((theme) => {
-      console.log(data[theme])
+      // add pagination
     })
     state.themesLoaded = true
     emitter.emit('render')

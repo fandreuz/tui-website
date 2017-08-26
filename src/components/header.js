@@ -2,6 +2,7 @@ const html = require('choo/html')
 const navbar = require('../components/navbar')
 
 function header(state, emit) {
+  emit('updateUser')
   // include flashing terminal underline after title
   return html`
       <header>

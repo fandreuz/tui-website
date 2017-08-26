@@ -27,7 +27,6 @@ function builder(state, emit) {
 
   const defaults = state.buildingTheme
   const copyString = `theme -apply ${state.buildingThemeName}`
-  console.log(state)
   if (defaults !== null) {
     return html`
       <div className=${styles()}>

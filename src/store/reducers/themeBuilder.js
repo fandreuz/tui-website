@@ -2,7 +2,6 @@ const { themeXML, suggestionXML } = require('utils/fileNormalizer')
 const { publishTheme, updateTheme, removeTheme, fetchSingleThemes } = require('store/firebase')
 
 function setDefault(data, state, emitter) {
-  emitter.emit('updateUser')
   if (state.buildingTheme === null) {
     if (typeof data.theme !== 'undefined' && typeof data.suggestions !== 'undefined') {
       const theme = Object.assign({}, data.theme)
