@@ -14,5 +14,10 @@ function updateUser(state, emitter) {
   emitter.emit('render')
 
 }
-
-module.exports = updateUser
+function publishedTheme(data, state, emitter) {
+ state.userThemes.themeName = data.name
+ state.userThemes.themeFiles = data.files
+ state.userThemes.publishStatus = true
+ state.userTheme.auther = data.author
+}
+module.exports = { updateUser, themeInfo }

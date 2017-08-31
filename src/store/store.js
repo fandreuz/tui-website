@@ -12,6 +12,12 @@ function store(state, emitter) {
   state.currentUser = {}
   state.themePage = 0
   state.themesLoaded = false
+  state.userTheme = {
+	  themeName: '',
+	  themeFiles: '',
+	  publishStatus: '',
+	  author: ''
+  }
   state.buildingTheme = null
   state.buildingThemeName = ''
   state.publishStatus = null
