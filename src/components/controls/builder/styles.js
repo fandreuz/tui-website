@@ -114,7 +114,9 @@ function styles() {
   min-width: 160px;
   display: inline-block;
   `)
-
+  sheet.add('#downloads .error', `
+  color: red
+  `)
   sheet.render()
   return sheet.id
 }

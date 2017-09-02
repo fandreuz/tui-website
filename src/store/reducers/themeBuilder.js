@@ -21,6 +21,7 @@ function setDefault(data, state, emitter) {
     }
   }
 }
+
 function updateThemeValue(data, state, emitter) {
   state.buildingTheme[data.file][data.name] = data.value
   state.fileExports['theme'] = themeXML(state.buildingTheme.theme)
@@ -38,6 +39,13 @@ function updateThemeViewSettings(data, state, emitter) {
 
 function updatePublishTheme(data, state, emitter) {
   state.publishStatus = null
+  const hasSpaces = (data.name.indexOf(' ') !== -1)
+  console.log('hasSpaces', hasSpaces)
+  if (hasSpaces) {
+    state.publishStatus = false
+    emitter.emit('render')
+    return
+  }
   function callback(snapshot) {
     if (snapshot === null) {
       publishTheme(data, state.currentUser.uid, state.buildingTheme)

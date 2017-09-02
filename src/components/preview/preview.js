@@ -13,7 +13,7 @@ function themePreview({theme, suggestions}, state, emit) {
         <div className="upperLayer">
           <span class="device_color">Mr Sloth : user</span>
           <span class="ram_color">Available RAM: 18.49%</span>
-          <span class="battery_color_high">Battery: 35.43%</span>
+          <span class="battery_color_high">Battery: 35.43</span>
           <span class="time_color">07/19/17 06.11</span>
           <span class="storage_color">Internal Storage: 10.04%</span>
           <br>

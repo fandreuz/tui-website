@@ -4,11 +4,13 @@ function publishButton(state, emit) {
   function replaceAll(target, search, replacement) {
     return target.split(search).join(replacement)
   }
-  const error = html`<p class="error">The name is already taken</p>`
+  const error = html`<p class="error">Error: That name contains a space 
+    or is already taken</p>`
   const success = html`<p class="success">Your theme is published</p>`
   let themeName
   let themeAuthor
   let message = null
+
   if (state.publishStatus) {
     message = success
   }
@@ -41,7 +43,7 @@ function publishButton(state, emit) {
   function publish() {
     emit('render')
     emit('publishTheme', {
-      'name': replaceAll(themeName, ' ', '-'),
+      'name': themeName,
       'author': themeAuthor
     })
   }
