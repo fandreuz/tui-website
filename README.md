@@ -17,10 +17,14 @@ a place to help share themes and foster the comunity. the project is built using
 
 ```
 ## Website
-[T-UI Launcher]()
+[T-UI Launcher](tui-launcher.surge.sh)
 
 
 # How to run
+- requires [Node 8*](https://nodejs.org/en/) 
+- requires npm (included with node)
+
+Open a terminal and run 
 
 ```
 npm install
@@ -29,12 +33,13 @@ npm run start
 will start a local instants on locahost:8080
 to config the server go to .config
 
-will start a local instant
+will start a local instants
 
 # How to publish
 currenly this publishs to surge.sh through the cmd
 ```
 npm run publish
+// its under my surge acount sorry 
 ```
 
 # Theme Previews
