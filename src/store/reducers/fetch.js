@@ -2,7 +2,7 @@ const { fetchThemes } = require('store/firebase')
 
 function getThemes(state, emitter) {
   fetchThemes((data) => {
-    state.themes = data
+    // state.themes = data
     const pages = []
     let themeCount = 0
     let pageCount = 0
@@ -23,6 +23,7 @@ function getThemes(state, emitter) {
       console.log(pages)
       // console.log(singlePage)
     })
+    state.themes = pages
     state.themesLoaded = true
     emitter.emit('render')
   })
