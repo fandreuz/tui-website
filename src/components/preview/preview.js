@@ -11,14 +11,14 @@ function themePreview({theme, suggestions}, state, emit) {
         <div class="bg_image"></div>
         <div class="overlay_color"></div>
         <div className="upperLayer">
-          <span class="device_color">Mr Sloth : user</span>
+          <span class="device_color">bullhead : Mr. Sloth</span>
           <span class="ram_color">Available RAM: 18.49%</span>
-          <span class="battery_color_high">Battery: 35.43%</span>
+          <span class="battery_color_high">Battery: 65%</span>
           <span class="time_color">07/19/17 06.11</span>
           <span class="storage_color">Internal Storage: 10.04%</span>
           <br>
-          <span class="input_color">$ Play store</span>
-          <span class="output_color"> ${'-->'} com.android.playstore</span>
+          <span class="input_color">echo t-ui!</span>
+          <span class="output_color">t-ui!</span>
           <br>
           <div className="input_area">
           <span class="input_color">$</span>
@@ -33,10 +33,10 @@ function themePreview({theme, suggestions}, state, emit) {
           </div>
           <div className="suggestions">
             ${suggestion('file')}
-            ${suggestion('apps')}
+            ${suggestion('app')}
             ${suggestion('cmd')}
             ${suggestion('song')}
-            ${suggestion('alias')}
+            ${suggestion('alia')}
             ${suggestion('contact')}
           </div>
         </div>
