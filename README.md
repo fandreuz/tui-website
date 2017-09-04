@@ -29,6 +29,8 @@ npm run start
 will start a local instants on locahost:8080
 to config the server go to .config
 
+will start a local instant
+
 # How to publish
 currenly this publishs to surge.sh through the cmd
 ```
