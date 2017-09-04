@@ -36,7 +36,7 @@ function themePreview({theme, suggestions}, state, emit) {
             ${suggestion('app')}
             ${suggestion('cmd')}
             ${suggestion('song')}
-            ${suggestion('alia')}
+            ${suggestion('alias')}
             ${suggestion('contact')}
           </div>
         </div>
