@@ -57,8 +57,8 @@ function styles(sheet, sv) {
            display:flex;
            clear:both;
            font-size:1.5em;
-           padding-top:1em;
-           padding-bottom:1em;
+           margin-bottom: 0.5em;
+           margin-top: 0.5em;
            text-align:center;
     `)
   sheet.add(`.theme_preview .bottom-toolbar i`, `
