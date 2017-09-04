@@ -4,13 +4,11 @@ function getThemes(state, emitter) {
   fetchThemes((data) => {
     // state.themes = data
     const pages = []
-    let themeCount = 0
-    let pageCount = 0
     let singlePage = []
     let globalCount = 0
     Object.keys(data).map((theme) => {
      // add pagination
-      singlePage.push(theme)
+      singlePage.push(data[theme])
       globalCount++
       if (singlePage.length === 20) {
         pages.push(singlePage)
@@ -24,9 +22,17 @@ function getThemes(state, emitter) {
       // console.log(singlePage)
     })
     state.themes = pages
+    if (state.currentPage.length === 0) {
+      state.currentPage = pages[0]
+    }
     state.themesLoaded = true
     emitter.emit('render')
   })
+}
+function loadThemePage(state, emitter) {
+  state.themePage = state.themePage++
+  state.currentPage = state.currentPage.concat(state.pages[state.themePage])
+  emitter.emit('render')
 }
 
 function getSingle(data, state, emitter) {
@@ -36,7 +42,8 @@ function getSingle(data, state, emitter) {
 
 const fetchFiles = {
   getThemes,
-  getSingle
+  getSingle,
+  loadThemePage
 }
 
 module.exports = fetchFiles

@@ -8,11 +8,13 @@ function themeList(state, emit) {
   if (state.themesLoaded === false) {
     emit('getThemes')
   } else {
-    // Create a list from the theme files fetched
-    list = Object.keys(state.themes).map((name) => {
+    const pi = state.themePage
+    const currentPage = state.themes[pi]
+      // Create a list from the theme files fetched
+    list = currentPage.map((theme) => {
       // return a theme preview element
-      if (state.themes[name].published === true) {
-        return themeListItem([name, state.themes[name]], state, emit)
+      if (theme.published === true) {
+        return themeListItem([theme.name, theme], state, emit)
       }
     })
   }
