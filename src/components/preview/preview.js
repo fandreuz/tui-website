@@ -33,7 +33,7 @@ function themePreview({theme, suggestions}, state, emit) {
           </div>
           <div className="suggestions">
             ${suggestion('file')}
-            ${suggestion('apps')}
+            ${suggestion('app')}
             ${suggestion('cmd')}
             ${suggestion('song')}
             ${suggestion('alias')}
