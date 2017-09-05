@@ -22,7 +22,7 @@ function themeListItem(self, state, emit) {
   return html`
       <div class="theme_item">
         ${preview(files, state, emit)}
-        <h1>${themeName}</h1>
+        <h1><p align="left">${themeName}</p></h1>
         <h2><p align="right" style="color:white">Downloads: 2<sup>${pow}</sup></p></h2>
         <h2><p align="right" style="color:white">By: ${author}</p></h2>
         ${actions(files, themeName)}
