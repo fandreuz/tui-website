@@ -5,6 +5,16 @@ const copy = require('copy-to-clipboard')
 function themeListItem(self, state, emit) {
   const themeName = self[0]
   const themeObject = self[1]
+
+  const dwns = themeObject['downloads']
+  var pow = 0;
+  while (Math.pow(2,pow) < dwns) {
+    pow++;
+  }
+  if(pow > 0) pow--;
+
+  const author = themeObject['author']
+
   const files = {
     'theme': themeObject['files']['THEME'],
     'suggestions': themeObject['files']['SUGGESTIONS']
@@ -13,6 +23,8 @@ function themeListItem(self, state, emit) {
       <div class="theme_item">
         ${preview(files, state, emit)}
         <h1>${themeName}</h1>
+        <h2><p align="right" style="color:white">Downloads: 2<sup>${pow}</sup></p></h2>
+        <h2><p align="right" style="color:white">By: ${author}</p></h2>
         ${actions(files, themeName)}
       </div>
     `
@@ -23,9 +35,9 @@ function actions(files, name) {
 
   function copyUrl() {
     copy(copyString, {
-      message: 'Command Copied'
+      message: 'cmd copied'
     })
-    alert('Command Copied')
+    alert('cmd copied')
   }
   return html` <div className="actions">
             <div class="desktop-only">
@@ -35,7 +47,7 @@ function actions(files, name) {
             </div>
             <div className="mobile-only">
             <div onclick=${copyUrl} className="themeString">
-              <code><pre>${copyString}</pre></code>
+              <code><pre>$ ${copyString}</pre></code>
             </div>
             </div>
           </div>`
