@@ -4,14 +4,14 @@ const copy = require('copy-to-clipboard')
 function saveButton(copyString, state, emit) {
   return html`
      <a onclick=${saveFile}>
-      [Paste into T-UI]
+      ${copyString}
      </a>
   `
   function saveFile() {
     copy(copyString, {
-      message: 'Command Copied'
+      message: 'cmd copied'
     })
-    alert('Command Copied')
+    alert('cmd copied')
   }
 }
 
