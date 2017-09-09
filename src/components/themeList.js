@@ -1,45 +1,62 @@
 const html = require('choo/html')
 const themeListItem = require('components/themeListItem')
 const Fairybread = require('fairybread')
+const sv = require('../style/vars')
+
 
 function themeList(state, emit) {
   // if the themes aren't loaded fetch them
-  let list = html`<h3>Loading theme list...</h3>`
+  let list = html`<h3>Loading Theme list...</h3>`
   if (state.themesLoaded === false) {
     emit('getThemes')
   } else {
-    // Create a list from the theme files fetched
-    list = Object.keys(state.themes).map((name) => {
+    const pi = state.themePage
+    const currentPage = state.currentPage
+      // Create a list from the theme files fetched
+    list = currentPage.map((theme) => {
       // return a theme preview element
-      if (state.themes[name].published === true) {
-        return themeListItem([name, state.themes[name]], state, emit)
+      if (typeof theme !== undefined) {
+        return themeListItem([theme.name, theme], state, emit)
       }
     })
   }
 
   // Set Default theme for base  of theme creation
-  if (typeof state.themes.Default !== 'undefined') {
-    const defaults = {
-      'theme': state.themes.Default.files['THEME'],
-      'suggestions': state.themes.Default.files['SUGGESTIONS']
-    }
-    emit('setDefault', defaults)
-  }
-
-  // Return the List
-  //  <div className="theme_item "><a className="fake" href="/create" ><h1>+ <br>New theme</h1></a></div>
-  //
   return html`
-     <div class="theme_list ${styles()}">
+     <div class="theme_list ${styles(sv)}">
       ${list}
-     </div>
-  `
-  // Create Styles
-  function styles() {
+      ${Pagination(state, emit)}
+        </div>
+ 
+     `
+  function Pagination(state, emit) {
+    const maxIndex = state.themes.length ? state.themes.length: 0;
+    const index = state.themePage
+    
+    if (maxIndex !== index && state.themesLoaded === true && state.hidePagination !== true) {   
+      return html`<button className="loadMore" onclick=${loadMoreThemes}>vvvv Load More themes vvvv</button>` 
+    }
+  }
+  function loadMoreThemes() {
+    emit('loadThemePage')
+  }
+    // Create Styles
+  function styles(sv) {
     const sheet = new Fairybread('local')
     sheet.add('', `
           min-height:263px;
         `)
+    sheet.add('.loadMore', `
+          background: none;
+          border: 0px;
+          font-family:'lucida_consoleregular', monospace;
+          color: ${sv.textColor}; 
+          display: block;
+          width: 100%;
+          text-align:center;
+          padding: 1em 0em;
+          cursor: pointer;
+    `)
     sheet.add('.theme_item', `
           width: 23%;
           padding:1em;

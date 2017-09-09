@@ -28,16 +28,14 @@ exports.truncate = functions.database.ref('/themes/').onWrite(event => {
   return parentRef.once('value').then(snapshot => {
 
       snapshot.forEach(function(child) {
-        console.log('child', child.key)
         if(child.key.indexOf('custom_theme_') === 0){
           customThemeCount++;
-          console.log('customThemeCount', customThemeCount)
           if(customThemeCount > MAX_LOG_COUNT){
             updates[child.key] = null;
           }
         }
       });
-      console.log('updates', updates)
+      //console.log('updates', updates)
       // Update the parent. This effectively removes the extra children.
       customThemeCount = 0
       return parentRef.update(updates);

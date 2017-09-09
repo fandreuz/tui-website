@@ -3,6 +3,7 @@ const header = require('components/header')
 const builder = require('components/controls/builder/builder')
 
 function createView(state, emit) {
+  // Set Default theme for base  of theme creation
   return html`
     <body>
          <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
