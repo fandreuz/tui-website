@@ -9,11 +9,11 @@ function themeList(state, emit) {
     emit('getThemes')
   } else {
     const pi = state.themePage
-    const currentPage = state.themes[pi]
+    const currentPage = state.currentPage
       // Create a list from the theme files fetched
     list = currentPage.map((theme) => {
       // return a theme preview element
-      if (theme.published === true) {
+      if (typeof theme !== undefined) {
         return themeListItem([theme.name, theme], state, emit)
       }
     })
@@ -27,16 +27,27 @@ function themeList(state, emit) {
     }
     emit('setDefault', defaults)
   }
-
-  // Return the List
+   // Return the List
   //  <div className="theme_item "><a className="fake" href="/create" ><h1>+ <br>New theme</h1></a></div>
   //
   return html`
      <div class="theme_list ${styles()}">
       ${list}
-     </div>
-  `
-  // Create Styles
+      ${Pagination(state, emit)}
+        </div>
+ 
+     `
+  function Pagination(state, emit) {
+    console.log()
+    if (state.hidePagination !== true) {   
+      return html`<button onclick=${loadMoreThemes}>Load More themes</button>` 
+    }
+  }
+  function loadMoreThemes() {
+   // console.log('ran')
+    emit('loadThemePage')
+  }
+    // Create Styles
   function styles() {
     const sheet = new Fairybread('local')
     sheet.add('', `

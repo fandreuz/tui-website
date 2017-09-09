@@ -6,21 +6,34 @@ function getThemes(state, emitter) {
     const pages = []
     let singlePage = []
     let globalCount = 0
+    const publishedThemes = [];
     Object.keys(data).map((theme) => {
-     // add pagination
-      singlePage.push(data[theme])
-      globalCount++
-      if (singlePage.length === 20) {
-        pages.push(singlePage)
-        singlePage = []
+      if (theme.indexOf('custom_theme_') === -1) {
+        publishedThemes.push(theme);
       }
-      if (singlePage.length > 0 && globalCount === Object.keys(data).length) {
-        pages.push(singlePage)
-        singlePage = []
+    });
+    
+    publishedThemes.map((theme) => {
+      //count only published
+        // push to a page
+        if(typeof data[theme] !== 'undefined'){
+          singlePage.push(data[theme])
+          //count that page
+          globalCount++
+        
+        if (singlePage.length === 20) {
+          //20 themes per page then reset
+          pages.push(singlePage)
+          singlePage = []
+        }
+        if (singlePage.length > 0 && globalCount === publishedThemes.length) {
+          //get any leftover theme that don't make a full 20
+          pages.push(singlePage)
+          singlePage = []
+        }
       }
-      console.log(pages)
-      // console.log(singlePage)
-    })
+    }
+    )
     state.themes = pages
     if (state.currentPage.length === 0) {
       state.currentPage = pages[0]
@@ -29,9 +42,19 @@ function getThemes(state, emitter) {
     emitter.emit('render')
   })
 }
+
 function loadThemePage(state, emitter) {
-  state.themePage = state.themePage++
-  state.currentPage = state.currentPage.concat(state.pages[state.themePage])
+  state.themePage = state.themePage + 1
+  console.log(state.themePage)
+  console.log(state.themes.length)
+  
+  if (state.themePage === state.themes.length) {
+    state.hidePagination = true
+  } else {
+    if(typeof state.themes[state.themePage] !== 'undefined'){
+      state.currentPage = state.currentPage.concat(state.themes[state.themePage])
+    }
+  }
   emitter.emit('render')
 }
 

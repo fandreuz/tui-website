@@ -12,7 +12,8 @@ function store(state, emitter) {
   state.themes = {}
   state.themeList = {}
   state.currentUser = {}
-  state.themePage = 0
+  state.themePage = 1
+  state.hidePagination = false
   state.currentPage = []
   state.themesLoaded = false
   state.buildingTheme = null
