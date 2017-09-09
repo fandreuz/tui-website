@@ -22,8 +22,8 @@ function themeListItem(self, state, emit) {
   return html`
       <div class="theme_item">
         ${preview(files, state, emit)}
-        <h1><p align="left">${themeName}<span style="float:right">2<sup>${pow}</sup></span></p></h1>
-        <h2><p align="right" style="color:white">By: ${author}</p></h2>
+        <h1><p align="left">${themeName}<span className="downloads">2<sup>${pow}</sup></span></p></h1>
+        <h2><p className="author" >By: ${author}</p></h2>
         ${actions(files, themeName)}
       </div>
     `
