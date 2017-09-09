@@ -112,13 +112,13 @@ function anonSignup() {
 
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-      console.log('User is signed in.')
+      // console.log('User is signed in.')
       const isAnonymous = user.isAnonymous
       const uid = user.uid
       const loggedIn = { isAnonymous, uid }
       return loggedIn
     } else {
-      console.log('User is signed out.')
+      // console.log('User is signed out.')
       // User is signed out.
     }
   })
