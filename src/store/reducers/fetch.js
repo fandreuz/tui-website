@@ -1,8 +1,27 @@
-const { fetchThemes } = require('store/firebase')
+const { fetchThemes, updateTheme } = require('store/firebase')
+
+function createDefault(state, data) {
+  const theme = Object.assign({}, data.files['THEME'])
+  const suggestions = Object.assign({}, data.files['SUGGESTIONS'])
+  const newDefaultTheme = {
+    theme,
+    suggestions
+  }
+  updateTheme(
+    `custom_theme_${state.currentUser.uid}`,
+    state.currentUser.uid,
+    newDefaultTheme
+  )
+  return newDefaultTheme
+}
+
+
 
 function getThemes(state, emitter) {
   fetchThemes((data) => {
-    // state.themes = data
+    // Create custom theme base
+    state.buildingTheme = createDefault(state, data['Default']);
+    console.log(state.buildingTheme)
     const pages = []
     let singlePage = []
     let globalCount = 0
@@ -12,15 +31,15 @@ function getThemes(state, emitter) {
         publishedThemes.push(theme);
       }
     });
-    
+
     publishedThemes.map((theme) => {
       //count only published
-        // push to a page
-        if(typeof data[theme] !== 'undefined'){
-          singlePage.push(data[theme])
-          //count that page
-          globalCount++
-        
+      // push to a page
+      if (typeof data[theme] !== 'undefined') {
+        singlePage.push(data[theme])
+        //count that page
+        globalCount++
+
         if (singlePage.length === 20) {
           //20 themes per page then reset
           pages.push(singlePage)
@@ -45,14 +64,12 @@ function getThemes(state, emitter) {
 
 function loadThemePage(state, emitter) {
   state.themePage = state.themePage + 1
-  console.log(state.themePage)
-  console.log(state.themes.length)
-  
   if (state.themePage === state.themes.length) {
     state.hidePagination = true
   } else {
-    if(typeof state.themes[state.themePage] !== 'undefined'){
+    if (typeof state.themes[state.themePage] !== 'undefined') {
       state.currentPage = state.currentPage.concat(state.themes[state.themePage])
+      // if () { state.hidePagination = true }
     }
   }
   emitter.emit('render')

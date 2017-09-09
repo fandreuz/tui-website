@@ -3,7 +3,6 @@ function store(state, emitter) {
   emitter.on('getThemes', () => getThemes(state, emitter))
   emitter.on('publishTheme', (data) => updatePublishTheme(data, state, emitter))
   emitter.on('getSingle', (data) => getSingle(data, state, emitter))
-  emitter.on('setDefault', (data) => setDefault(data, state, emitter))
   emitter.on('updateUser', () => updateUser(state, emitter))
   emitter.on('updateThemeValue', (data) => updateThemeValue(data, state, emitter))
   emitter.on('updateThemeViewSettings', (data) => updateThemeViewSettings(data, state, emitter))
