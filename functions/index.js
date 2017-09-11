@@ -41,3 +41,34 @@ exports.truncate = functions.database.ref('/themes/').onWrite(event => {
       return parentRef.update(updates);
   });
 });
+
+
+// Removes siblings of the node that element that triggered the function if there are more than MAX_LOG_COUNT.
+// In this example we'll keep the max number of chat message history to MAX_LOG_COUNT.
+exports.duplicates = functions.database.ref('/themes/').onWrite(event => {
+  const parentRef = event.data.ref;
+  let customThemeCount = 0;
+  let defaults;
+  const updates = {};
+  // var defaultRef = functions.database.ref("/themes/Default");
+  // Get the data on a post that has been removed
+  // console.log(defaultRef)
+  return parentRef.once('value').then(snapshot => {
+      
+      // snapshot.forEach(function(child) {
+      //   const snapshotTheme = child.val();
+      //   const newTheme = snapshotTheme.files.THEME;
+      //   const newSuggestions = snapshotTheme.files.SUGGESTIONS;
+      //   const defaultTheme = defaults.files.THEME;
+      //   const defaultSuggestions = defaults.files.SUGGESTIONS;
+
+      //   if(newTheme === defaultTheme && newSuggestions === defaultSuggestions){
+      //     console.log(newTheme);
+      //   }
+      // });
+      //console.log('updates', updates)
+      // Update the parent. This effectively removes the extra children.
+      customThemeCount = 0
+      return parentRef.update(updates);
+  });
+});
