@@ -1,4 +1,12 @@
-const { getThemes, updateUser, getSingle, loadThemePage, updatePublishTheme, setDefault, updateThemeValue, updateThemeViewSettings } = require('store/reducers')
+const { getThemes,
+    updateUser,
+    getSingle,
+    loadThemePage,
+    updatePublishTheme,
+    updateThemeValue,
+    updateThemeViewSettings
+} = require('store/reducers')
+
 function store(state, emitter) {
   emitter.on('getThemes', () => getThemes(state, emitter))
   emitter.on('publishTheme', (data) => updatePublishTheme(data, state, emitter))

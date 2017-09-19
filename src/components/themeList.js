@@ -3,19 +3,18 @@ const themeListItem = require('components/themeListItem')
 const Fairybread = require('fairybread')
 const sv = require('../style/vars')
 
-
 function themeList(state, emit) {
   // if the themes aren't loaded fetch them
   let list = html`<h3>Loading Theme list...</h3>`
   if (state.themesLoaded === false) {
     emit('getThemes')
   } else {
-    const pi = state.themePage
+
     const currentPage = state.currentPage
       // Create a list from the theme files fetched
     list = currentPage.map((theme) => {
       // return a theme preview element
-      if (typeof theme !== undefined) {
+      if (typeof theme !== 'undefined') {
         return themeListItem([theme.name, theme], state, emit)
       }
     })
@@ -30,11 +29,11 @@ function themeList(state, emit) {
  
      `
   function Pagination(state, emit) {
-    const maxIndex = state.themes.length ? state.themes.length: 0;
+    const maxIndex = state.themes.length ? state.themes.length : 0
     const index = state.themePage
-    
-    if (maxIndex !== index && state.themesLoaded === true && state.hidePagination !== true) {   
-      return html`<button className="loadMore" onclick=${loadMoreThemes}>vvvv Load More themes vvvv</button>` 
+
+    if (maxIndex !== index && state.themesLoaded === true && state.hidePagination !== true) {
+      return html`<button className="loadMore" onclick=${loadMoreThemes}>vvvv Load More themes vvvv</button>`
     }
   }
   function loadMoreThemes() {
