@@ -81,6 +81,17 @@ function themeList(state, emit) {
     sheet.add('.theme_item .actions', `
           color:white;
     `)
+    sheet.add('.theme_item .author',`
+        max-height: 15px;
+        overflow:hidden;
+        display:block;
+        width: 100%;
+        text-align: right;
+        color: white;
+        `)
+    sheet.add('.theme_item .downloads', `
+        float:right;
+        `)
     sheet.add('.themeString', `
         color:white;
         border:1px solid;
