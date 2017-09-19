@@ -8,7 +8,6 @@
     "build": "webpack -p --config='.config/webpack.prod.js'",
     "publish": "npm run build && surge ./build --domain tui-launcher.surge.sh",
     "publish-stg": "npm run build && surge ./build --domain tui-launcher-stg.surge.sh"
-    
   },
   "repository": {
     "type": "git",
