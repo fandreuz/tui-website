@@ -1,6 +1,6 @@
 {
   "name": "tui-website",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "a website for a terminal launcher on android",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,6 @@
     "build": "webpack -p --config='.config/webpack.prod.js'",
     "publish": "npm run build && surge ./build --domain tui-launcher.surge.sh",
     "publish-stg": "npm run build && surge ./build --domain tui-launcher-stg.surge.sh"
-    
   },
   "repository": {
     "type": "git",

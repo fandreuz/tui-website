@@ -1,9 +1,6 @@
 const html = require('choo/html')
 
 function publishButton(state, emit) {
-  function replaceAll(target, search, replacement) {
-    return target.split(search).join(replacement)
-  }
   const error = html`<p class="error">Error: That name contains a space 
     or is already taken</p>`
   const success = html`<p class="success">Your theme is published</p>`

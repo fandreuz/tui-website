@@ -19,7 +19,7 @@ function updateThemeViewSettings(data, state, emitter) {
 function updatePublishTheme(data, state, emitter) {
   state.publishStatus = null
   const hasSpaces = (data.name.indexOf(' ') !== -1)
-  //console.log('hasSpaces', hasSpaces)
+  // console.log('hasSpaces', hasSpaces)
   if (hasSpaces) {
     state.publishStatus = false
     emitter.emit('render')

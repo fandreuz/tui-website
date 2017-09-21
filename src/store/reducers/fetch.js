@@ -15,38 +15,36 @@ function createDefault(state, data) {
   return newDefaultTheme
 }
 
-
-
 function getThemes(state, emitter) {
   fetchThemes((data) => {
     // Create custom theme base
-    state.buildingTheme = createDefault(state, data['Default']);
+    state.buildingTheme = createDefault(state, data['Default'])
     console.log(state.buildingTheme)
     const pages = []
     let singlePage = []
     let globalCount = 0
-    const publishedThemes = [];
+    const publishedThemes = []
     Object.keys(data).map((theme) => {
       if (theme.indexOf('custom_theme_') === -1) {
-        publishedThemes.push(theme);
+        publishedThemes.push(theme)
       }
-    });
+    })
 
     publishedThemes.map((theme) => {
-      //count only published
+      // count only published
       // push to a page
       if (typeof data[theme] !== 'undefined') {
         singlePage.push(data[theme])
-        //count that page
+        // count that page
         globalCount++
 
         if (singlePage.length === 20) {
-          //20 themes per page then reset
+          // 20 themes per page then reset
           pages.push(singlePage)
           singlePage = []
         }
         if (singlePage.length > 0 && globalCount === publishedThemes.length) {
-          //get any leftover theme that don't make a full 20
+          // get any leftover theme that don't make a full 20
           pages.push(singlePage)
           singlePage = []
         }
